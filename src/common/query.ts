@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from "graphql-tag"
 
 export const getAllQuery = gql`
   query GetAllQuery {
@@ -42,7 +42,7 @@ export const getAllQuery = gql`
         url
       }
     }
-    works (orderBy: updatedAt_DESC) {
+    works(orderBy: updatedAt_DESC) {
       url
       name
       logo {
@@ -55,13 +55,13 @@ export const getAllQuery = gql`
         description
       }
     }
-    customers (orderBy: updatedAt_DESC) {
+    customers(orderBy: updatedAt_DESC) {
       logo {
         url
       }
       url
     }
-    experiences (orderBy: startedAt_DESC) {
+    experiences(orderBy: startedAt_DESC) {
       name
       description
       image {

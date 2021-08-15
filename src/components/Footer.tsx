@@ -1,11 +1,18 @@
 // tslint:disable:no-console
 // tslint:disable:no-debugger
-import * as React from 'react'
-import { Link } from 'react-router-dom'
-
-import { Container, Dropdown, DropdownProps, Grid, Image, List, Segment } from 'semantic-ui-react'
-import { getLang, getLocalized, langs, openChat } from '../common/util'
-import { color } from '../styles/theme'
+import * as React from "react"
+import { Link } from "react-router-dom"
+import {
+  Container,
+  Dropdown,
+  DropdownProps,
+  Grid,
+  Image,
+  List,
+  Segment,
+} from "semantic-ui-react"
+import { getLang, getLocalized, langs, openChat } from "../common/util"
+import { color } from "../styles/theme"
 
 interface IFooterProps {
   lang: string
@@ -18,17 +25,17 @@ const styles = {
     maxWidth: 240,
   },
   dropdown: {
-    display: 'flex',
-    justifyContent: 'center',
+    display: "flex",
+    justifyContent: "center",
     marginBottom: 20,
   },
   listItem: {
-    color: 'rgba(255,255,255,.9)',
+    color: "rgba(255,255,255,.9)",
   },
   root: {
     background: color.primary,
-    margin: '2em 0em 0em',
-    padding: '3em 0em'
+    margin: "2em 0em 0em",
+    padding: "3em 0em",
   },
   spacer: {
     height: 20,
@@ -36,28 +43,40 @@ const styles = {
 }
 
 const Footer = ({ lang, setLang, sites }: IFooterProps) => {
-  const { name, localizations, logo: { url } } = sites[0]
-  const onChange = (event: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => {
+  const {
+    name,
+    localizations,
+    logo: { url },
+  } = sites[0]
+  const onChange = (
+    event: React.SyntheticEvent<HTMLElement>,
+    data: DropdownProps
+  ) => {
     setLang(String(data.value))
   }
 
   return (
     <Segment inverted vertical style={styles.root}>
-      <Container textAlign='center'>
+      <Container textAlign="center">
         <List horizontal inverted divided link>
-          <List.Item as={Link} to='/' style={styles.listItem}>
+          <List.Item as={Link} to="/" style={styles.listItem}>
             <u>Home</u>
           </List.Item>
-          <List.Item as={Link} to='/team' style={styles.listItem}>
+          <List.Item as={Link} to="/team" style={styles.listItem}>
             <u>Team</u>
           </List.Item>
-          <List.Item as={Link} to='/work' style={styles.listItem}>
+          <List.Item as={Link} to="/work" style={styles.listItem}>
             <u>Works</u>
           </List.Item>
-          <List.Item as='a' href='https://blog.oisu.jp' target='_blank'>
+          <List.Item as="a" href="https://blog.oisu.jp" target="_blank">
             <u>Blog</u>
           </List.Item>
-          <List.Item as={Link} onClick={openChat} to='.' style={styles.listItem}>
+          <List.Item
+            as={Link}
+            onClick={openChat}
+            to="."
+            style={styles.listItem}
+          >
             <u>Contact</u>
           </List.Item>
         </List>
@@ -67,15 +86,19 @@ const Footer = ({ lang, setLang, sites }: IFooterProps) => {
 
       <Grid columns={3} container stackable centered>
         <Grid.Row>
-          <Grid.Column verticalAlign='middle'>
-            <Image src={url} size='tiny' centered />
+          <Grid.Column verticalAlign="middle">
+            <Image src={url} size="tiny" centered />
           </Grid.Column>
-          <Grid.Column verticalAlign='middle' centered='true' style={styles.address}>
-              {name}
-              <br />
-              {getLocalized(lang, localizations, 'address')}
+          <Grid.Column
+            verticalAlign="middle"
+            centered="true"
+            style={styles.address}
+          >
+            {name}
+            <br />
+            {getLocalized(lang, localizations, "address")}
           </Grid.Column>
-          <Grid.Column verticalAlign='middle'>
+          <Grid.Column verticalAlign="middle">
             <div style={styles.dropdown}>
               <Dropdown
                 text={getLang(lang).text}

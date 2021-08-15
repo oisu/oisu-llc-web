@@ -1,7 +1,6 @@
-import * as React from 'react'
-
-import { Container, Divider, Header } from 'semantic-ui-react'
-import Work from './Work'
+import * as React from "react"
+import { Container, Divider, Header } from "semantic-ui-react"
+import Work from "./Work"
 
 export interface IWorkPageProps {
   works: [IWork]
@@ -10,22 +9,19 @@ export interface IWorkPageProps {
 
 const styles = {
   root: {
-    marginTop: '6em',
-  }
+    marginTop: "6em",
+  },
 }
 
 const WorkPage = ({ lang, works }: IWorkPageProps) => {
   return (
     <Container text style={styles.root}>
-
-      <Header as='h2'>
+      <Header as="h2">
         <Header.Content>Works</Header.Content>
-        <Divider hidden/>
-
+        <Divider hidden />
       </Header>
 
       <Work works={works} lang={lang} />
-
     </Container>
   )
 }

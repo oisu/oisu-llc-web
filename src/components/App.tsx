@@ -25,7 +25,7 @@ class App extends React.Component<ChildDataProps<IAllDataResponse>, State> {
   constructor (props: ChildDataProps<IAllDataResponse>) {
     super(props)
     // TODO: Turn this React.Context
-    const lang = Cookies.get('lang') || 'en'
+    const lang = Cookies.get('lang') || 'ja'
     this.state = {
       lang,
     }
@@ -42,14 +42,14 @@ class App extends React.Component<ChildDataProps<IAllDataResponse>, State> {
         sites,
         socials,
         customers,
-      }
+      },
     } = this.props
 
     const setLang = (langKey: string) => {
       const lang = getLang(langKey)
       Cookies.set('lang', langKey)
       this.setState({
-        lang: lang.key
+        lang: lang.key,
       })
     }
     const teamProps = {
@@ -127,7 +127,4 @@ class App extends React.Component<ChildDataProps<IAllDataResponse>, State> {
   }
 }
 
-export default compose(
-  withAllData(),
-  renderWhileLoading(Loading),
-)(App)
+export default compose(withAllData(), renderWhileLoading(Loading))(App)

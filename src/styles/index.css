@@ -14,7 +14,8 @@ body {
   max-height: 160px !important;
 }
 
-.ui.items:not(.unstackable)>.item>.image.tiny, .ui.items:not(.unstackable)>.item>.image.tiny>img {
+.ui.items:not(.unstackable) > .item > .image.tiny,
+.ui.items:not(.unstackable) > .item > .image.tiny > img {
   max-width: 100px !important;
 }
 

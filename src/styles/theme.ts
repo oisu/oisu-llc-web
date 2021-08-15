@@ -1,3 +1,3 @@
 export const color = {
-  primary: 'grey',
+  primary: "grey",
 }
