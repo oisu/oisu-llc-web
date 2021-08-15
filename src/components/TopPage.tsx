@@ -1,6 +1,7 @@
 // tslint:disable:no-console
 import * as React from "react"
 import {
+  Button,
   Container,
   Divider,
   Grid,
@@ -10,6 +11,7 @@ import {
   Segment,
 } from "semantic-ui-react"
 import * as shortid from "shortid"
+import { getLocalized, openChat } from "../common/util"
 import { color } from "../styles/theme"
 import Customer from "./Customer"
 
@@ -18,9 +20,14 @@ export interface ITopPageProps {
   sites: [ISite]
   socials: [ISocial]
   businesses: [IBusiness]
+  lang: string
 }
 
 const styles = {
+  appealingText: {
+    marginBottom: 10,
+    marginTop: 10,
+  },
   businessName: {
     marginBottom: 10,
   },
@@ -64,11 +71,15 @@ const styles = {
     paddingBottom: 0,
     paddingTop: 0,
   },
+  largeSpacer: {
+    height: 60,
+  },
   root: {
     padding: 0,
   },
   spacer: {
-    height: 20,
+    marginBottom: 10,
+    marginTop: 10,
   },
   subHeader: {
     fontSize: "0.9rem",
@@ -78,13 +89,19 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    minHeight: 600,
+    minHeight: 640,
     paddingBottom: 20,
     paddingTop: 0,
   },
 }
 
-const TopPage = ({ businesses, sites, socials, customers }: ITopPageProps) => {
+const TopPage = ({
+  businesses,
+  sites,
+  socials,
+  customers,
+  lang,
+}: ITopPageProps) => {
   const site = sites[0]
   const coverStyle = {
     background: `url(${site.coverImage.url})`,
@@ -108,9 +125,7 @@ const TopPage = ({ businesses, sites, socials, customers }: ITopPageProps) => {
           What we do
           <Divider hidden />
         </Header>
-
         <Container style={styles.spacer} />
-
         <Grid columns={3} divided container stackable>
           <Grid.Row>
             {businesses.map((b) => (
@@ -128,6 +143,21 @@ const TopPage = ({ businesses, sites, socials, customers }: ITopPageProps) => {
             ))}
           </Grid.Row>
         </Grid>
+        <Container style={styles.largeSpacer} />
+
+        <Container style={styles.appealingText} textAlign="center">
+          {getLocalized(lang, site.localizations, "appealingText")
+            .split(",")
+            .map((s: string, i: number) => (
+              <Container key={i}>{s}</Container>
+            ))}
+        </Container>
+
+        <Container style={styles.spacer} />
+
+        <Button size="huge" color="grey" onClick={openChat}>
+          Contact
+        </Button>
       </Container>
 
       <Segment basic style={styles.intro}>

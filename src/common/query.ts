@@ -3,7 +3,6 @@ import gql from "graphql-tag"
 export const getAllQuery = gql`
   query GetAllQuery {
     sites {
-      name
       description
       keyword
       url
@@ -18,8 +17,10 @@ export const getAllQuery = gql`
       catchphrase
       address
       localizations(includeCurrent: true) {
+        name
         locale
         address
+        appealingText
       }
     }
     socials {

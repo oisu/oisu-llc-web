@@ -44,10 +44,10 @@ const styles = {
 
 const Footer = ({ lang, setLang, sites }: IFooterProps) => {
   const {
-    name,
     localizations,
     logo: { url },
   } = sites[0]
+
   const onChange = (
     event: React.SyntheticEvent<HTMLElement>,
     data: DropdownProps
@@ -72,6 +72,13 @@ const Footer = ({ lang, setLang, sites }: IFooterProps) => {
             <u>Blog</u>
           </List.Item>
           <List.Item
+            as="a"
+            href="https://www.wantedly.com/companies/company_985610/projects"
+            target="_blank"
+          >
+            <u>Jobs</u>
+          </List.Item>
+          <List.Item
             as={Link}
             onClick={openChat}
             to="."
@@ -94,7 +101,7 @@ const Footer = ({ lang, setLang, sites }: IFooterProps) => {
             centered="true"
             style={styles.address}
           >
-            {name}
+            Oisu LLC
             <br />
             {getLocalized(lang, localizations, "address")}
           </Grid.Column>

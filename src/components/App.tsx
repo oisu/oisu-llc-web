@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import { compose } from "recompose"
 import "semantic-ui-css/semantic.min.css"
-import { getLang } from "../common/util"
+import { getLang, getLocalized } from "../common/util"
 import { withAllData } from "../enhancers/graphql"
 import { renderWhileLoading } from "../enhancers/navigation"
 import Footer from "./Footer"
@@ -68,6 +68,7 @@ class App extends React.Component<ChildDataProps<IAllDataResponse>, State> {
     const topProps = {
       businesses,
       customers,
+      lang: this.state.lang,
       sites,
       socials,
     }
@@ -83,36 +84,36 @@ class App extends React.Component<ChildDataProps<IAllDataResponse>, State> {
 
     const site = sites[0]
     const me = mes[0]
-
+    const siteName = getLocalized(this.state.lang, site.localizations, "name")
     return (
       <Router>
         <ScrollToTop>
           <Helmet>
-            <title>{site.name}</title>
+            <title>{siteName}</title>
             <meta charSet="utf-8" />
-            <meta name="title" content={site.name} />
+            <meta name="title" content={siteName} />
             <meta name="description" content={site.description} />
             <meta name="author" content={me.name} />
             <meta name="keywords" content={site.keyword} />
             <meta name="url" content={site.url} />
 
-            <meta itemProp="name" content={site.name} />
+            <meta itemProp="name" content={siteName} />
             <meta itemProp="description" content={site.description} />
             <meta itemProp="image" content={site.logo.url} />
 
             <meta name="og:url" content={site.url} />
             <meta name="og:type" content="profile" />
-            <meta name="og:title" content={site.name} />
+            <meta name="og:title" content={siteName} />
             <meta name="og:description" content={site.description} />
             <meta name="og:image" content={site.logo.url} />
 
             <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content={site.name} />
+            <meta name="twitter:title" content={siteName} />
             <meta name="twitter:description" content={site.description} />
             <meta name="twitter:image" content={site.logo.url} />
           </Helmet>
 
-          <MenuBar sites={sites} />
+          <MenuBar sites={sites} lang={this.state.lang} />
 
           <React.Fragment>
             <Route exact path="/" render={renderTop} />

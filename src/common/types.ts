@@ -33,7 +33,6 @@ interface IAllDataResponse {
 }
 
 interface ISite {
-  name: string
   description: string
   keyword: string
   url: string
@@ -47,8 +46,10 @@ interface ISite {
 }
 
 interface ISiteLocalized {
+  name: string
   locale: string
   address: string
+  appealingText: string
 }
 
 interface ISocial {
