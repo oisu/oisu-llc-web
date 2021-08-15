@@ -6,6 +6,6 @@ export const renderWhileLoading = (
   propName = "data"
 ) =>
   branch(
-    (props) => props[propName] && props[propName].loading,
+    (props: object) => props[propName] && props[propName].loading,
     renderComponent(component)
   )

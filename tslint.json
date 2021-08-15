@@ -12,6 +12,8 @@
     "jsx-boolean-value": false,
     "trailing-comma": true,
     "interface-name" : false,
-    "no-unused-variable": true
+    "no-unused-variable": true,
+    "space-before-function-paren": false,
+    "quotemark": [true, "double"]
   }
 }
