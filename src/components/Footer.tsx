@@ -2,16 +2,8 @@
 // tslint:disable:no-debugger
 import * as React from "react"
 import { Link } from "react-router-dom"
-import {
-  Container,
-  Dropdown,
-  DropdownProps,
-  Grid,
-  Image,
-  List,
-  Segment,
-} from "semantic-ui-react"
-import { getLang, getLocalized, langs, openChat } from "../common/util"
+import { Container, Grid, Image, List, Segment } from "semantic-ui-react"
+import { getLocalized, openChat } from "../common/util"
 import { color } from "../styles/theme"
 
 interface IFooterProps {
@@ -48,12 +40,12 @@ const Footer = ({ lang, setLang, sites }: IFooterProps) => {
     logo: { url },
   } = sites[0]
 
-  const onChange = (
-    event: React.SyntheticEvent<HTMLElement>,
-    data: DropdownProps
-  ) => {
-    setLang(String(data.value))
-  }
+  // const onChange = (
+  //   event: React.SyntheticEvent<HTMLElement>,
+  //   data: DropdownProps
+  // ) => {
+  //   setLang(String(data.value))
+  // }
 
   return (
     <Segment inverted vertical style={styles.root}>
@@ -62,7 +54,7 @@ const Footer = ({ lang, setLang, sites }: IFooterProps) => {
           <List.Item as={Link} to="/" style={styles.listItem}>
             <u>Home</u>
           </List.Item>
-          <List.Item as={Link} to="/team" style={styles.listItem}>
+          {/* <List.Item as={Link} to="/team" style={styles.listItem}>
             <u>Team</u>
           </List.Item>
           <List.Item as={Link} to="/work" style={styles.listItem}>
@@ -77,7 +69,7 @@ const Footer = ({ lang, setLang, sites }: IFooterProps) => {
             target="_blank"
           >
             <u>Jobs</u>
-          </List.Item>
+          </List.Item> */}
           <List.Item
             as={Link}
             onClick={openChat}
@@ -106,13 +98,13 @@ const Footer = ({ lang, setLang, sites }: IFooterProps) => {
             {getLocalized(lang, localizations, "address")}
           </Grid.Column>
           <Grid.Column verticalAlign="middle">
-            <div style={styles.dropdown}>
+            {/* <div style={styles.dropdown}>
               <Dropdown
                 text={getLang(lang).text}
                 onChange={onChange}
                 options={langs}
               />
-            </div>
+            </div> */}
             © 2021 — All Rights Reserved
           </Grid.Column>
         </Grid.Row>

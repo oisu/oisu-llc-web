@@ -1,19 +1,8 @@
 // tslint:disable:no-console
 import * as React from "react"
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  Segment,
-} from "semantic-ui-react"
-import * as shortid from "shortid"
-import { getLocalized, openChat } from "../common/util"
+import { Header, Image, Segment } from "semantic-ui-react"
+import { openChat } from "../common/util"
 import { color } from "../styles/theme"
-import Customer from "./Customer"
 
 export interface ITopPageProps {
   customers: [ICustomer]
@@ -75,6 +64,9 @@ const styles = {
     height: 60,
   },
   root: {
+    display: "flex",
+    flexDirection: "column" as const,
+    flexGrow: 1,
     padding: 0,
   },
   spacer: {
@@ -83,6 +75,21 @@ const styles = {
   },
   subHeader: {
     fontSize: "0.9rem",
+  },
+  warnings: {
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "column" as const,
+    justifyContent: "center",
+    padding: 30,
+  },
+  warningsCaption: {
+    marginBottom: 60,
+    marginTop: 60,
+  },
+  warningsText: {
+    marginBottom: 10,
+    textAlign: "center" as const,
   },
   whatWeDo: {
     alignItems: "center",
@@ -118,67 +125,28 @@ const TopPage = ({
           <Header size="medium">{site.caption}</Header>
         </div>
       </div>
-
-      <Container text basic="true" style={styles.whatWeDo}>
-        <Header size="large">
-          <Divider hidden />
-          What we do
-          <Divider hidden />
-        </Header>
-        <Container style={styles.spacer} />
-        <Grid columns={3} divided container stackable>
-          <Grid.Row>
-            {businesses.map((b) => (
-              <Grid.Column key={shortid.generate()} style={styles.gridRow}>
-                <Icon name={b.iconName} size="huge" />
-                <Header as="h2" icon style={styles.header}>
-                  <Header.Content style={styles.businessName}>
-                    {b.name}
-                  </Header.Content>
-                  <Header.Subheader size="mini" style={styles.subHeader}>
-                    {b.description}
-                  </Header.Subheader>
-                </Header>
-              </Grid.Column>
-            ))}
-          </Grid.Row>
-        </Grid>
-        <Container style={styles.largeSpacer} />
-
-        <Container style={styles.appealingText} textAlign="center">
-          {getLocalized(lang, site.localizations, "appealingText")
-            .split(",")
-            .map((s: string, i: number) => (
-              <Container key={i}>{s}</Container>
-            ))}
-        </Container>
-
-        <Container style={styles.spacer} />
-
-        <Button size="huge" color="grey" onClick={openChat}>
-          Contact
-        </Button>
-      </Container>
-
-      <Segment basic style={styles.intro}>
-        <Container text>
-          <Header size="large" inverted textAlign="center">
-            {site.catchphrase}
-          </Header>
-        </Container>
-      </Segment>
-
-      <Divider hidden />
-
-      <Container text style={styles.customers}>
-        <Header size="large" textAlign="center">
-          <Divider hidden />
-          Our customers
-          <Divider hidden />
-        </Header>
-        <Container style={styles.spacer} />
-        <Customer customers={customers} />
-      </Container>
+      <div style={styles.warnings}>
+        <h2 style={styles.warningsCaption}>
+          👷 Oisu LLCのWebサイトは現在、縮小営業中です👷
+        </h2>
+        <span style={styles.warningsText}>
+          弊社代表三浦のプロフィールについては
+          <a
+            href="https://www.cake.me/s---Rh8HmZwZOqp1QdLVswoJg--/hiroaki-miura-eafb03"
+            target="_blank"
+          >
+            <u>こちら</u>
+          </a>
+          をご参照ください🙏
+        </span>
+        <span style={styles.warningsText}>
+          お仕事のご依頼やお問い合わせは、
+          <a onClick={openChat}>
+            <u>フォーム</u>
+          </a>
+          よりお願いします！
+        </span>
+      </div>
     </Segment>
   )
 }

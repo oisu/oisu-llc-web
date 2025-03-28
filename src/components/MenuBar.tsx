@@ -22,7 +22,7 @@ const MenuBar = ({ sites, lang }: IMenuBarProps) => {
         <Menu.Item as={Link} to="/" header style={{ background: "none" }}>
           Oisu LLC
         </Menu.Item>
-        <Menu.Item as={Link} to="/team">
+        {/* <Menu.Item as={Link} to="/team">
           <u>Team</u>
         </Menu.Item>
         <Menu.Item as={Link} to="/work">
@@ -37,7 +37,7 @@ const MenuBar = ({ sites, lang }: IMenuBarProps) => {
           target="_blank"
         >
           <u>Jobs</u>
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item as="a" onClick={openChat}>
           <u>Contact</u>
         </Menu.Item>
