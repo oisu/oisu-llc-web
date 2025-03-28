@@ -43,5 +43,8 @@
     "tslint-config-standard": "^7.1.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.5.2"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
