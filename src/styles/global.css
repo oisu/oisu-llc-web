@@ -1,4 +1,4 @@
-/* 色・線・影・角丸。差し色（--accent / --on-accent）は html の data-accent で変わる */
+/* 色・線・影・角丸。差し色（--accent / --on-accent）は html の data-accent で変わる（既定はブルー） */
 :root {
   --bg: #fbecd9;
   --bg-alt: #f6dfc3;
@@ -10,16 +10,16 @@
   --shadow-lg: 6px 6px 0 var(--ink);
   --radius: 14px;
   --radius-sm: 10px;
-  --accent: #f2802e;
-  --on-accent: #0a0a0a;
+  --accent: #3a6ff2;
+  --on-accent: #ffffff;
   --font: "DM Sans", "Noto Sans JP", ui-sans-serif, system-ui, -apple-system, "Hiragino Sans", sans-serif;
   --max: 1040px;
   --gutter: 20px;
 }
 
-html[data-accent="blue"] { --accent: #3a6ff2; --on-accent: #ffffff; }
 html[data-accent="green"] { --accent: #1e9e62; --on-accent: #ffffff; }
 html[data-accent="pink"] { --accent: #ec4f8c; --on-accent: #ffffff; }
+html[data-accent="purple"] { --accent: #7a5af0; --on-accent: #ffffff; }
 
 *,
 *::before,
