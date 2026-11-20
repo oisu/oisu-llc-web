@@ -12,12 +12,12 @@ const strengths = [
   {
     no: '02',
     title: '積み重ねてきた開発の経験',
-    body: 'AI のない時代から、手でコードを書き、プロダクトを作ってきました。レガシーな開発の経験があるから、AI の出したものを見極め、正しい方向へ導けます。',
+    body: 'AI のない時代から、金融系 SIer・メガベンチャー・大手事業会社、そしてスタートアップの 0→1 まで、手でプロダクトを作ってきました。レガシーな開発の経験があるから、AI の出したものを見極め、正しい方向へ導けます。',
   },
   {
     no: '03',
     title: '幅広いドメイン知識',
-    body: 'EC・フィットネス・動画配信・ギフト・資格学習など、さまざまな領域でプロダクトを作ってきた知見を、事業の判断に活かします。',
+    body: '金融・EC・ゲーム・メディア・医療・フィットネスなど、さまざまな領域の知見と、CTO としてスタートアップを立ち上げた経営の視点を、プロダクトの判断に活かします。',
   },
 ];
 
@@ -25,7 +25,7 @@ const services = [
   {
     icon: '🚀',
     title: '受託開発',
-    body: 'Web・モバイルアプリ・バックエンドの設計から開発、リリース後の運用まで。AI 前提の開発で、速く形にします。',
+    body: 'UI/UX・ワイヤーフレームから、Web・モバイルアプリ・バックエンドの開発、リリース後の運用まで。AI 前提の開発で、速く形にします。',
   },
   {
     icon: '🔁',
@@ -39,8 +39,8 @@ const services = [
   },
   {
     icon: '📐',
-    title: '設計の相談・技術顧問',
-    body: 'アーキテクチャ・技術選定・ワイヤーフレームなど、作る前の判断から相談に乗ります。',
+    title: '設計・技術顧問・PdM',
+    body: 'アーキテクチャ・技術選定から、プロダクトマネジメントまで。作る前の判断から相談に乗ります。',
   },
   {
     icon: '🧭',
@@ -54,7 +54,7 @@ const services = [
   },
 ];
 
-const stacks = ['Web', 'iOS・Android', 'バックエンド', 'AI エージェント', 'React', 'React Native', 'Next.js', 'Astro', 'TypeScript', 'Firebase', 'AWS', 'GCP'];
+const stacks = ['Web', 'iOS・Android', 'バックエンド', '生成 AI', 'AI エージェント', 'React', 'React Native', 'Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Firebase', 'AWS'];
 
 const requests = [
   '新しいサービス・アプリの立ち上げ（MVP）',
@@ -71,17 +71,17 @@ const steps = [
 ];
 
 const works = [
-  { initial: 'B', name: 'BeatFit', body: '音声で指導するフィットネスアプリ（iOS・Android）。React Native と Firebase でアプリ側を担当。', tags: ['React Native', 'Firebase'] },
-  { initial: 'G', name: 'GU の EC サイト', body: 'ファッションブランドの EC サイト。商品の一覧・詳細ページを React の SPA に作り直すチームに参加。', tags: ['React', 'SPA'] },
-  { initial: '1', name: '1Screen', body: 'Netflix・Hulu・Prime Video などの配信情報を、まとめて探せる動画配信の横断検索サービス。', tags: ['Web'] },
-  { initial: 'g', name: 'giff letter', body: 'お祝いや感謝の手紙を添えて、ギフトを贈れるアプリ。', tags: ['モバイルアプリ'] },
+  { initial: 'P', name: 'PreferredAI Insight Scan（Preferred Networks）', body: '口コミやアンケートなど大量のテキストから、生成 AI でインサイトを見つける Web アプリの開発に参加。', tags: ['生成 AI', 'Next.js'] },
+  { initial: 'ほ', name: 'ほねなびLite（Curelity）', body: '共同創業したスタートアップで、CTO として整形外科医と開発した診療支援アプリ。病院での実証実験まで、一人で開発。', tags: ['React Native', 'Next.js'] },
+  { initial: 'g', name: 'giff letter', body: '100 画面を超えるギフトアプリの新規開発を、開発リードとしてトラブルなくリリース。', tags: ['React Native', 'Stripe'] },
+  { initial: 'B', name: 'BeatFit', body: 'オーディオフィットネスアプリを 0→1 で開発し、2 か月で初回リリース。Google Play ベスト オブ 2019 に選出。', tags: ['React Native', 'Firebase'] },
 ];
 
 const company = [
   ['会社名', `${COMPANY.name}（${COMPANY.nameEn}）`],
   ['代表者', COMPANY.representative],
   ['所在地', `${COMPANY.postalCode} ${COMPANY.address}`],
-  ['事業内容', 'Web・モバイルアプリの受託開発\n開発プロセスの改善・AI 開発基盤の構築\n設計の相談・技術顧問・FDE・コンサルティング\n自社アプリの開発・運営'],
+  ['事業内容', 'Web・モバイルアプリの受託開発\n開発プロセスの改善・AI 開発基盤の構築\n設計の相談・技術顧問・PdM・FDE・コンサルティング\n自社アプリの開発・運営'],
 ];
 
 const formReady = CONTACT_FORM_ENDPOINT !== '';
