@@ -19,13 +19,13 @@ export const CONTACT_FORM_ENDPOINT = '';
  * onAccent は、差し色の上に置く文字の色。
  */
 export const ACCENTS = [
-  { id: 'blue', label: 'ブルー', color: '#3A6FF2', onAccent: '#FFFFFF' },
-  { id: 'green', label: 'グリーン', color: '#1E9E62', onAccent: '#FFFFFF' },
-  { id: 'pink', label: 'ピンク', color: '#EC4F8C', onAccent: '#FFFFFF' },
-  { id: 'purple', label: 'パープル', color: '#7A5AF0', onAccent: '#FFFFFF' },
+  { id: 'mint', label: 'ミント', color: '#3DD9A0', onAccent: '#0A0A0A' },
+  { id: 'lemon', label: 'レモンイエロー', color: '#FFD23F', onAccent: '#0A0A0A' },
+  { id: 'lime', label: 'ライム', color: '#B8F24A', onAccent: '#0A0A0A' },
+  { id: 'coral', label: 'コーラルレッド', color: '#FF5B4A', onAccent: '#FFFFFF' },
 ] as const;
 
-export const DEFAULT_ACCENT = 'blue';
+export const DEFAULT_ACCENT = 'mint';
 
 export const SOCIALS = [
   { label: 'X', url: 'https://x.com/oisullc' },
