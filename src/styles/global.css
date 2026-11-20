@@ -1,4 +1,4 @@
-/* 色・線・影・角丸。差し色（--accent / --on-accent）は html の data-accent で変わる（既定はミント） */
+/* 色・線・影・角丸。差し色（--accent / --on-accent）は html の data-accent で変わる（既定はレモンイエロー） */
 :root {
   --bg: #fbecd9;
   --bg-alt: #f6dfc3;
@@ -10,14 +10,14 @@
   --shadow-lg: 6px 6px 0 var(--ink);
   --radius: 14px;
   --radius-sm: 10px;
-  --accent: #3dd9a0;
+  --accent: #ffd23f;
   --on-accent: #0a0a0a;
   --font: "DM Sans", "Noto Sans JP", ui-sans-serif, system-ui, -apple-system, "Hiragino Sans", sans-serif;
   --max: 1040px;
   --gutter: 20px;
 }
 
-html[data-accent="lemon"] { --accent: #ffd23f; --on-accent: #0a0a0a; }
+html[data-accent="mint"] { --accent: #3dd9a0; --on-accent: #0a0a0a; }
 html[data-accent="lime"] { --accent: #b8f24a; --on-accent: #0a0a0a; }
 html[data-accent="coral"] { --accent: #ff5b4a; --on-accent: #ffffff; }
 
