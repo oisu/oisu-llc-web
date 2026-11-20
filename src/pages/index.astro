@@ -1,0 +1,752 @@
+---
+import Base from '../layouts/Base.astro';
+import { COMPANY, CONTACT_FORM_ENDPOINT } from '../config';
+
+/** 強み（コンセプト）。AI ネイティブ × 経験 × ドメイン知識 */
+const strengths = [
+  {
+    no: '01',
+    title: 'AIネイティブな開発',
+    body: '設計・実装・テスト・レビューまで、開発のすべてを AI 前提で組み立てなおしています。AI コーディングを使いこなし、少人数でも速く、質の高いものを届けます。',
+  },
+  {
+    no: '02',
+    title: '20 年近いエンジニアの経験',
+    body: 'AI のない時代から、手でコードを書き、プロダクトを作ってきました。純粋でレガシーな開発の経験があるから、AI の出したものを見極め、正しい方向へ導けます。',
+  },
+  {
+    no: '03',
+    title: '幅広いドメイン知識',
+    body: 'EC・フィットネス・動画配信・ギフト・資格学習など、さまざまな領域でプロダクトを作ってきた知見を、事業の判断に活かします。',
+  },
+];
+
+const services = [
+  {
+    icon: '🚀',
+    title: '受託開発',
+    body: 'Web・モバイルアプリ・バックエンドの設計から開発、リリース後の運用まで。AI 前提の開発で、速く形にします。',
+  },
+  {
+    icon: '🔁',
+    title: '開発プロセスの改善',
+    body: 'チームの開発の流れを見直し、AI を組み込んだ進め方に変えます。レビュー・テスト・リリースまで、まとめて整えます。',
+  },
+  {
+    icon: '🤖',
+    title: 'AI コーディング・開発基盤',
+    body: 'AI コーディングのツールやエージェントの導入、ルールやコンテキストの整備、CI など、AI が力を出せる開発の基盤を作ります。',
+  },
+  {
+    icon: '📐',
+    title: '設計の相談・技術顧問',
+    body: 'アーキテクチャ・技術選定・ワイヤーフレームなど、作る前の判断から相談に乗ります。',
+  },
+  {
+    icon: '🧭',
+    title: 'FDE',
+    body: 'Forward Deployed Engineer として、お客様のチームや現場に入り込み、課題に合わせて AI を組み込んだ仕組みを作り、定着させます。',
+  },
+  {
+    icon: '💬',
+    title: 'コンサルティング',
+    body: 'AI をどう事業や開発に取り入れるか。何を AI に任せ、何を人が決めるかを、一緒に考えます。',
+  },
+];
+
+const stacks = ['Web', 'iOS・Android', 'バックエンド', 'AI エージェント', 'React', 'React Native', 'Next.js', 'Astro', 'TypeScript', 'Firebase', 'AWS', 'GCP'];
+
+const requests = [
+  '新しいサービス・アプリの立ち上げ（MVP）',
+  '開発チームへの AI コーディングの導入',
+  '今ある Web・アプリの改善や作り直し',
+  '社内の業務やプロダクトへの AI の組み込み',
+];
+
+const steps = [
+  { title: 'ご相談', body: 'まずはオンラインで、やりたいことや状況を伺います。ご相談は無料です。' },
+  { title: '設計', body: '何を AI に任せ、何を人が決めるかを含めて、進め方と見積もりを出します。' },
+  { title: '開発', body: 'AI 前提の開発で、短い区切りごとに動くものを見ていただきながら進めます。' },
+  { title: 'リリース・運用', body: '公開やストアへの申請、公開後の改善まで続けてお手伝いします。' },
+];
+
+const works = [
+  { initial: 'B', name: 'BeatFit', body: '音声で指導するフィットネスアプリ（iOS・Android）。React Native と Firebase でアプリ側を担当。', tags: ['React Native', 'Firebase'] },
+  { initial: 'G', name: 'GU の EC サイト', body: 'ファッションブランドの EC サイト。商品の一覧・詳細ページを React の SPA に作り直すチームに参加。', tags: ['React', 'SPA'] },
+  { initial: '1', name: '1Screen', body: 'Netflix・Hulu・Prime Video などの配信情報を、まとめて探せる動画配信の横断検索サービス。', tags: ['Web'] },
+  { initial: 'g', name: 'giff letter', body: 'お祝いや感謝の手紙を添えて、ギフトを贈れるアプリ。', tags: ['モバイルアプリ'] },
+];
+
+const company = [
+  ['会社名', `${COMPANY.name}（${COMPANY.nameEn}）`],
+  ['代表者', COMPANY.representative],
+  ['所在地', `${COMPANY.postalCode} ${COMPANY.address}`],
+  ['事業内容', 'Web・モバイルアプリの受託開発\n開発プロセスの改善・AI 開発基盤の構築\n設計の相談・技術顧問・FDE・コンサルティング\n自社アプリの開発・運営'],
+];
+
+const formReady = CONTACT_FORM_ENDPOINT !== '';
+---
+
+<Base
+  title="合同会社おいす | AIネイティブな Web・アプリ開発"
+  description="合同会社おいすは、開発のすべてを AI 前提で組み立てなおした開発会社です。20 年近いエンジニアの経験とプロダクト開発の知見で、AI に任せられない判断を担います。"
+>
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">AI-Native Development</p>
+      <h1>
+        つくるのは AI に。<br />決めるのは、人が。
+      </h1>
+      <p class="hero-sub">
+        <span class="scribble">
+          AIネイティブ × 20 年の開発の知見
+          <svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M2 8 C 60 2, 120 11, 180 6 S 270 3, 298 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
+          </svg>
+        </span>
+      </p>
+      <p class="hero-lead">
+        合同会社おいすは、開発のすべてを <strong>AI 前提</strong>で組み立てなおしています。<br class="pc" />
+        コードを書くことを AI に任せられるいま、価値があるのは、何を作り、どう作るかを決める<strong>人間の判断</strong>です。
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="#contact">相談する →</a>
+        <a class="btn" href="#services">できることを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- コンセプト -->
+  <section class="section" id="concept">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Concept</p>
+        <h2>
+          <span class="phrase">AI に任せられない</span><span class="phrase">ところに、</span><br class="pc" /><span class="phrase">価値がある。</span>
+        </h2>
+      </div>
+      <div class="card statement">
+        <p>
+          AI が書いたコードの良し悪しを見極め、何を作るべきかを決め、責任を持ってリリースする。そこは、人間にしかできません。
+        </p>
+        <p>
+          AI のない時代から 20 年近く、エンジニアとしてプロダクトを作ってきたキャリアと知見こそが、<strong>他社にない圧倒的な優位性</strong>です。それにとらわれず、いちばん新しい AI の開発を取り入れ続けています。
+        </p>
+      </div>
+      <ol class="values-list">
+        {
+          strengths.map((v) => (
+            <li class="value">
+              <span class="value-no">{v.no}</span>
+              <div>
+                <h4>{v.title}</h4>
+                <p>{v.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- できること -->
+  <section class="section alt" id="services">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Services</p>
+        <h2>できること</h2>
+        <p>単純な受託開発だけでなく、開発の進め方や基盤づくり、設計や AI 活用の相談まで受け付けています。</p>
+      </div>
+      <div class="services">
+        {
+          services.map((s) => (
+            <article class="card service">
+              <span class="service-icon" aria-hidden="true">{s.icon}</span>
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </article>
+          ))
+        }
+      </div>
+      <div class="stacks">
+        <span class="stacks-label">対応する領域・技術</span>
+        <div class="tags">
+          {stacks.map((t) => (
+            <span class="tag">{t}</span>
+          ))}
+        </div>
+      </div>
+
+      <a class="card product" href="/apps/gyoseishoshi/">
+        <span class="product-label">自社プロダクト</span>
+        <div class="product-body">
+          <h3>行政書士 | 毎日ちょっとドリル</h3>
+          <p>行政書士試験の過去問を、◯×の一問一答で解く iOS アプリ。受託だけでなく、自社でもアプリを作っています。</p>
+        </div>
+        <span class="product-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 開発のご相談 -->
+  <section class="section" id="development">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Development</p>
+        <h2>開発のご相談</h2>
+        <p>新しいサービスの立ち上げから、今あるプロダクトや開発チームの改善まで。何を頼むか決まっていなくても、まずは状況をお聞かせください。</p>
+      </div>
+
+      <div class="dev-grid">
+        <div class="card requests">
+          <h3>こんなご相談を受けています</h3>
+          <ul>
+            {requests.map((r) => <li>{r}</li>)}
+          </ul>
+        </div>
+        <ol class="steps">
+          {
+            steps.map((s, i) => (
+              <li class="card step">
+                <span class="step-no">{i + 1}</span>
+                <div>
+                  <h4>{s.title}</h4>
+                  <p>{s.body}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+
+      <h3 class="works-title">これまでの実績</h3>
+      <ul class="card works">
+        {
+          works.map((w) => (
+            <li class="work">
+              <span class="work-icon" aria-hidden="true">{w.initial}</span>
+              <div class="work-body">
+                <h4>{w.name}</h4>
+                <p>{w.body}</p>
+                <div class="tags">
+                  {w.tags.map((t) => (
+                    <span class="tag">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- 会社概要 -->
+  <section class="section alt" id="company">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Company</p>
+        <h2>会社概要</h2>
+      </div>
+      <dl class="card company">
+        {
+          company.map(([k, v]) => (
+            <div class="company-row">
+              <dt>{k}</dt>
+              <dd>{v}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section class="section" id="contact">
+    <div class="container contact">
+      <div class="section-head">
+        <p class="eyebrow">Contact</p>
+        <h2>お問い合わせ</h2>
+        <p>開発のご相談・お見積もり・取材など、お気軽にご連絡ください。2 営業日以内にお返事します。</p>
+      </div>
+      <form class="card form" id="contact-form" action={CONTACT_FORM_ENDPOINT || undefined} method="post">
+        <label>
+          <span>お名前</span>
+          <input name="name" autocomplete="name" required />
+        </label>
+        <label>
+          <span>メールアドレス</span>
+          <input name="email" type="email" autocomplete="email" required />
+        </label>
+        <label>
+          <span>会社名<small>（任意）</small></span>
+          <input name="company" autocomplete="organization" />
+        </label>
+        <label>
+          <span>ご相談の内容</span>
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+        <p class="note">いただいた情報は、お問い合わせへの返信のためだけに使います。</p>
+        <button class="btn btn-accent" type="submit" disabled={!formReady}>送信する</button>
+        {!formReady && <p class="note">フォームは準備中です。</p>}
+        <p class="result" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // お問い合わせの送信。ページを離れずに送り、結果をフォームの下に出す
+  const form = document.querySelector<HTMLFormElement>('#contact-form');
+  const result = form?.querySelector<HTMLElement>('.result');
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.action || !result) return;
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    if (button) button.disabled = true;
+    result.textContent = '送信しています…';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      result.textContent = '送信しました。お返事まで少しお待ちください。';
+    } catch {
+      result.textContent = '送信できませんでした。時間をおいて、もう一度お試しください。';
+    } finally {
+      if (button) button.disabled = false;
+    }
+  });
+</script>
+
+<style>
+  .hero {
+    padding: 88px 0 96px;
+    border-bottom: var(--line);
+    background:
+      radial-gradient(circle at 1px 1px, rgba(10, 10, 10, 0.12) 1px, transparent 0) 0 0 / 22px 22px,
+      var(--bg);
+  }
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+  .hero-inner .eyebrow {
+    align-self: center;
+  }
+  .hero h1 {
+    /* 1 行 10 文字ほどの見出しが、スマホでも 1 行に収まる大きさ */
+    font-size: clamp(28px, 7.4vw, 72px);
+    line-height: 1.2;
+  }
+  .hero-sub {
+    font-size: clamp(20px, 3.4vw, 30px);
+    font-weight: 900;
+  }
+  .hero-lead {
+    max-width: 720px;
+    color: var(--ink);
+    font-size: clamp(15px, 2vw, 18px);
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .alt {
+    background: var(--bg-alt);
+    border-top: var(--line);
+    border-bottom: var(--line);
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .service {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px;
+  }
+  .service-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border: var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--accent);
+    font-size: 26px;
+  }
+  .service h3 {
+    font-size: 22px;
+  }
+  .service p {
+    color: var(--ink-muted);
+    flex: 1;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+  }
+  .stacks {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 20px;
+  }
+  .stacks-label {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .statement {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+    margin-bottom: 48px;
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.9;
+    background: var(--accent);
+    color: var(--on-accent);
+    box-shadow: var(--shadow-lg);
+  }
+  .statement p:first-child {
+    font-weight: 900;
+    font-size: clamp(18px, 2.6vw, 24px);
+    line-height: 1.6;
+  }
+
+  .values-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .value {
+    display: flex;
+    gap: 16px;
+  }
+  .value-no {
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--accent);
+    -webkit-text-stroke: 1.5px var(--ink);
+  }
+  .value h4 {
+    font-size: 18px;
+    margin: 0 0 6px;
+    font-weight: 900;
+  }
+  .value p {
+    color: var(--ink-muted);
+    font-size: 15px;
+  }
+
+  .product {
+    margin-top: 64px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 28px;
+    text-decoration: none;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .product:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .product-label {
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border: var(--line);
+    border-radius: 999px;
+    background: var(--bg);
+  }
+  .product-body {
+    flex: 1;
+  }
+  .product h3 {
+    font-size: 20px;
+  }
+  .product p {
+    color: var(--ink-muted);
+    font-size: 15px;
+  }
+  .product-arrow {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: var(--line);
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-weight: 900;
+    font-size: 20px;
+  }
+
+  .dev-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .requests {
+    padding: 28px;
+  }
+  .requests h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  .requests ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .requests li {
+    display: flex;
+    gap: 10px;
+    font-weight: 500;
+  }
+  .requests li::before {
+    content: "✓";
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    margin-top: 2px;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-size: 13px;
+    font-weight: 900;
+  }
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 22px;
+  }
+  .step-no {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: var(--line);
+    border-radius: 50%;
+    font-weight: 900;
+    background: var(--bg);
+  }
+  .step h4 {
+    margin: 0 0 2px;
+    font-size: 17px;
+    font-weight: 900;
+  }
+  .step p {
+    color: var(--ink-muted);
+    font-size: 15px;
+  }
+
+  .works-title {
+    font-size: 24px;
+    margin: 64px 0 24px;
+  }
+  .works {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  .work {
+    display: flex;
+    gap: 20px;
+    padding: 20px 24px;
+  }
+  .work + .work {
+    border-top: var(--line);
+  }
+  .work-icon {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border: var(--line);
+    border-radius: 14px;
+    background: var(--bg);
+    font-weight: 900;
+    font-size: 22px;
+  }
+  .work-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .work h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 900;
+  }
+  .work p {
+    color: var(--ink-muted);
+    font-size: 15px;
+  }
+
+  .company {
+    margin: 0;
+    overflow: hidden;
+  }
+  .company-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+  }
+  .company-row + .company-row {
+    border-top: var(--line);
+  }
+  .company dt {
+    padding: 18px 24px;
+    font-weight: 700;
+    background: var(--bg);
+    border-right: var(--line);
+  }
+  .company dd {
+    margin: 0;
+    padding: 18px 24px;
+    white-space: pre-line;
+  }
+
+  .contact {
+    max-width: 720px;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 28px;
+  }
+  .form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 700;
+  }
+  .form small {
+    font-weight: 400;
+    color: var(--ink-muted);
+  }
+  .form input,
+  .form textarea {
+    font: inherit;
+    font-weight: 400;
+    padding: 12px 14px;
+    border: var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--ink);
+  }
+  .form input:focus,
+  .form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent);
+  }
+  .form .btn {
+    align-self: flex-start;
+  }
+  .note {
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+  .result:empty {
+    display: none;
+  }
+
+  @media (max-width: 860px) {
+    .services,
+    .values-list {
+      grid-template-columns: 1fr;
+    }
+    .dev-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .hero {
+      padding: 64px 0 72px;
+    }
+    /* スマホでは、ラベルと矢印を上の行に、説明を下の行に */
+    .product {
+      flex-wrap: wrap;
+      padding: 22px;
+      gap: 14px;
+    }
+    .product-arrow {
+      order: 2;
+      margin-left: auto;
+      width: 40px;
+      height: 40px;
+    }
+    .product-body {
+      order: 3;
+      flex-basis: 100%;
+    }
+    .work {
+      padding: 18px;
+      gap: 14px;
+    }
+    .work-icon {
+      width: 44px;
+      height: 44px;
+      font-size: 18px;
+    }
+    .company-row {
+      grid-template-columns: 1fr;
+    }
+    .company dt {
+      border-right: none;
+      border-bottom: var(--line);
+      padding: 10px 18px;
+    }
+    .company dd {
+      padding: 14px 18px;
+    }
+    .form {
+      padding: 20px;
+    }
+  }
+</style>
