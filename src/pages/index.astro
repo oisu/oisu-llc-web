@@ -89,27 +89,29 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
 
 <Base
   title="合同会社おいす | AIネイティブな Web・アプリ開発"
-  description="合同会社おいすは、開発のすべてを AI 前提で組み立てなおした開発会社です。20 年近いエンジニアの経験とプロダクト開発の知見で、AI に任せられない判断を担います。"
+  description="合同会社おいすは、開発のすべてを AI 前提で組み立てている開発会社です。コーディングを AI に任せられるいま、何を作り、どう作るかを決める人間の判断を担います。"
 >
   <!-- ヒーロー -->
   <section class="hero">
     <div class="container hero-inner">
       <p class="eyebrow">AI-Native Development</p>
       <h1>
-        つくるのは AI に。<br />決めるのは、人が。
+        つくるのは、AI。<br />決めるのは、ヒト。
       </h1>
       <p class="hero-sub">
         <span class="scribble">
-          AIネイティブ × 20 年の開発の知見
+          <span class="phrase">AIネイティブ ×</span> <span class="phrase">スタートアップ開発の知見</span>
           <svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true">
             <path d="M2 8 C 60 2, 120 11, 180 6 S 270 3, 298 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
           </svg>
         </span>
       </p>
-      <p class="hero-lead">
-        合同会社おいすは、開発のすべてを <strong>AI 前提</strong>で組み立てなおしています。<br class="pc" />
-        コードを書くことを AI に任せられるいま、価値があるのは、何を作り、どう作るかを決める<strong>人間の判断</strong>です。
-      </p>
+      <div class="hero-lead">
+        <p>合同会社おいすは、開発のすべてを <strong>AI 前提</strong>で<span class="phrase">組み立てています。</span></p>
+        <p>
+          コーディングを AI に任せられるいま、価値があるのは、<br class="pc" />何を作り、どう作るかを決める<strong>人間の判断</strong>です。
+        </p>
+      </div>
       <div class="hero-actions">
         <a class="btn btn-accent" href="#contact">相談する →</a>
         <a class="btn" href="#services">できることを見る</a>
@@ -351,6 +353,9 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     font-weight: 900;
   }
   .hero-lead {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     max-width: 720px;
     color: var(--ink);
     font-size: clamp(15px, 2vw, 18px);
