@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="代表のアバター">
+  <rect width="240" height="240" fill="#FFD23F"/>
+  <!-- 肩 -->
+  <path d="M38 240v-10c0-28 32-44 82-44s82 16 82 44v10z" fill="#0A0A0A"/>
+  <!-- 首 -->
+  <rect x="103" y="166" width="34" height="34" rx="8" fill="#F3C6A0" stroke="#0A0A0A" stroke-width="6"/>
+  <!-- 顔 -->
+  <rect x="66" y="52" width="108" height="124" rx="42" fill="#F9D8BA" stroke="#0A0A0A" stroke-width="6"/>
+  <!-- 髪（横に流した短髪） -->
+  <path d="M63 118c-5-10-7-20-7-30 0-32 28-52 64-52s64 20 64 52c0 10-2 20-7 30-3-14-9-27-22-35-20 10-47 11-68 3-12 7-20 18-24 32z" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round"/>
+  <!-- 眉 -->
+  <path d="M91 114c6-2 12-2 18 0M131 114c6-2 12-2 18 0" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linecap="round"/>
+  <!-- 目 -->
+  <circle cx="100" cy="129" r="6" fill="#0A0A0A"/>
+  <circle cx="140" cy="129" r="6" fill="#0A0A0A"/>
+  <!-- 口 -->
+  <path d="M110 153c6 3 14 3 20 0" fill="none" stroke="#0A0A0A" stroke-width="4.5" stroke-linecap="round"/>
+</svg>

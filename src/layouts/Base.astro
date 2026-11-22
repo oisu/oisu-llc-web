@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { ACCENTS, DEFAULT_ACCENT } from '../config';
+import PostHog from '../components/PostHog.astro';
 
 interface Props {
   title: string;
@@ -10,35 +10,42 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const accentIds = ACCENTS.map((a) => a.id);
+// SNS や検索エンジンには、本番の絶対 URL を渡す
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/og.png', Astro.site).href;
 ---
 
 <!doctype html>
-<html lang="ja" data-accent={DEFAULT_ACCENT}>
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:site_name" content="Oisu LLC" />
+    <meta property="og:locale" content="ja_JP" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="つくるのは、AI。決めるのは、ヒト。 Oisu LLC" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
     />
-    <!-- 選んだ差し色を、描画の前に当てる（ちらつかないように） -->
-    <script is:inline define:vars={{ accentIds }}>
-      try {
-        const saved = localStorage.getItem('accent');
-        if (saved && accentIds.includes(saved)) document.documentElement.dataset.accent = saved;
-      } catch {}
-    </script>
+    <PostHog />
   </head>
   <body>
     <a class="skip" href="#main">本文へ</a>
@@ -47,5 +54,53 @@ const accentIds = ACCENTS.map((a) => a.id);
       <slot />
     </main>
     <Footer />
+    <!-- スクロールで要素を表示する。動かせない環境では何もせず、最初から全部見せる -->
+    <script is:inline>
+      (() => {
+        if (!('IntersectionObserver' in window)) return;
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const selector = [
+          '.section-head', '.statement', '.value', '.era', '.build-reasons li', '.build-bridge',
+          '.service', '.stacks', '.requests', '.step', '.works-title', '.work', '.logo-card',
+          '.company', '.profile', '.form',
+        ].map((s) => `main ${s}`).join(',');
+        const observer = new IntersectionObserver(
+          (entries) => {
+            let order = 0;
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              const el = entry.target;
+              observer.unobserve(el);
+              // 同時に見えたものは、少しずつずらして出す
+              el.style.transitionDelay = `${Math.min(order, 5) * 70}ms`;
+              el.classList.add('is-revealed');
+              order += 1;
+              const finish = () => {
+                el.classList.remove('reveal', 'is-revealed');
+                el.style.transitionDelay = '';
+              };
+              setTimeout(finish, 1300);
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+        );
+        for (const el of document.querySelectorAll(selector)) {
+          el.classList.add('reveal');
+          observer.observe(el);
+        }
+      })();
+    </script>
+    <script>
+      // ページの下半分にいるあいだは、端で引っぱったときの色をフッターの黒にする
+      const root = document.documentElement;
+      const syncEdge = () => {
+        const middle = (root.scrollHeight - window.innerHeight) / 2;
+        const edge = window.scrollY > middle ? 'bottom' : 'top';
+        if (root.dataset.edge !== edge) root.dataset.edge = edge;
+      };
+      window.addEventListener('scroll', syncEdge, { passive: true });
+      window.addEventListener('resize', syncEdge);
+      syncEdge();
+    </script>
   </body>
 </html>

@@ -1,61 +1,18 @@
 ---
-import { ACCENTS } from '../config';
-
-const nav = [
-  { href: '/#concept', label: 'コンセプト' },
-  { href: '/#services', label: 'できること' },
-  { href: '/#development', label: '開発のご相談' },
-  { href: '/#company', label: '会社概要' },
-];
+import { NAV } from '../config';
 ---
 
 <header class="header">
   <div class="container inner">
-    <a class="logo" href="/" aria-label="合同会社おいす トップへ">Oisu</a>
+    <a class="logo" href="/" aria-label="Oisu LLC トップへ">Oisu LLC</a>
     <nav class="nav" aria-label="ページ内のリンク">
-      {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+      {NAV.map((n) => <a href={n.href}>{n.label}</a>)}
     </nav>
     <div class="actions">
-      <div class="accents" role="radiogroup" aria-label="差し色">
-        {
-          ACCENTS.map((a) => (
-            <button
-              type="button"
-              class="swatch"
-              role="radio"
-              data-accent-id={a.id}
-              aria-label={a.label}
-              title={a.label}
-              style={`--swatch:${a.color}`}
-            />
-          ))
-        }
-      </div>
       <a class="btn btn-accent cta" href="/#contact">相談する</a>
     </div>
   </div>
 </header>
-
-<script>
-  // 差し色の切り替え。選んだ色は localStorage に覚える（使えないときは、その場だけ変える）
-  const root = document.documentElement;
-  const swatches = [...document.querySelectorAll<HTMLButtonElement>('.swatch')];
-  const sync = () => {
-    for (const s of swatches) {
-      s.setAttribute('aria-checked', String(s.dataset.accentId === root.dataset.accent));
-    }
-  };
-  for (const s of swatches) {
-    s.addEventListener('click', () => {
-      root.dataset.accent = s.dataset.accentId;
-      try {
-        localStorage.setItem('accent', s.dataset.accentId ?? '');
-      } catch {}
-      sync();
-    });
-  }
-  sync();
-</script>
 
 <style>
   .header {
@@ -71,22 +28,23 @@ const nav = [
     gap: 24px;
     height: 72px;
   }
+  /* 会社のロゴ。枠や影をつけず、ボタンと見分ける */
   .logo {
     display: inline-flex;
     align-items: center;
-    height: 44px;
-    padding: 0 16px;
-    border: var(--line);
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow);
-    background: var(--accent);
-    color: var(--on-accent);
+    flex-shrink: 0;
+    min-height: 44px;
+    color: var(--ink);
+    font-size: 22px;
     font-weight: 900;
-    font-size: 20px;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.01em;
+    line-height: 1;
     text-decoration: none;
+    white-space: nowrap;
   }
+  /* メニューは右に寄せ、相談ボタンの隣に置く */
   .nav {
+    margin-left: auto;
     display: flex;
     gap: 24px;
     font-weight: 700;
@@ -94,6 +52,7 @@ const nav = [
   }
   .nav a {
     text-decoration: none;
+    white-space: nowrap;
   }
   .nav a:hover {
     text-decoration: underline;
@@ -101,26 +60,9 @@ const nav = [
     text-underline-offset: 4px;
   }
   .actions {
-    margin-left: auto;
     display: flex;
     align-items: center;
     gap: 16px;
-  }
-  .accents {
-    display: flex;
-    gap: 6px;
-  }
-  .swatch {
-    width: 22px;
-    height: 22px;
-    padding: 0;
-    border-radius: 50%;
-    border: 2px solid var(--ink);
-    background: var(--swatch);
-    cursor: pointer;
-  }
-  .swatch[aria-checked='true'] {
-    box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--ink);
   }
   .cta {
     min-height: 44px;
@@ -130,6 +72,9 @@ const nav = [
     .nav {
       display: none;
     }
+    .actions {
+      margin-left: auto;
+    }
   }
   @media (max-width: 400px) {
     .inner {
@@ -137,10 +82,6 @@ const nav = [
     }
     .actions {
       gap: 10px;
-    }
-    .swatch {
-      width: 18px;
-      height: 18px;
     }
   }
 </style>

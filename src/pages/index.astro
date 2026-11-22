@@ -7,17 +7,17 @@ const strengths = [
   {
     no: '01',
     title: 'AIネイティブな開発',
-    body: '設計・実装・テスト・レビューまで、開発のすべてを AI 前提で組み立てています。AI コーディングを使いこなし、少人数でも速く、質の高いものを届けます。',
+    body: '設計からレビューまで、開発のすべてを AI 前提で組み立てています。AI コーディングを使いこなし、驚くほど少人数で、速く、質の高いものを届けます。',
   },
   {
     no: '02',
-    title: '積み重ねてきた開発の経験',
-    body: 'AI のない時代から、金融系 SIer・メガベンチャー・大手事業会社、そしてスタートアップの 0→1 まで、手でプロダクトを作ってきました。レガシーな開発の経験があるから、AI の出したものを見極め、正しい方向へ導けます。',
+    title: '多様なプロダクト開発実績',
+    body: 'SIer・メガベンチャー・大手事業会社、そしてスタートアップの 0→1 まで、さまざまな開発実績があるからこそ、AI の出したものを見極め、正しい方向へ導けます。',
   },
   {
     no: '03',
     title: '幅広いドメイン知識',
-    body: '金融・EC・ゲーム・メディア・医療・フィットネスなど、さまざまな領域の知見と、CTO としてスタートアップを立ち上げた経営の視点を、プロダクトの判断に活かします。',
+    body: '金融・EC・ゲーム・メディア・医療・フィットネスなど、さまざまな領域における知見があり、経営の視点もプロダクトの判断に活かします。',
   },
 ];
 
@@ -30,12 +30,12 @@ const services = [
   {
     icon: '🔁',
     title: '開発プロセスの改善',
-    body: 'チームの開発の流れを見直し、AI を組み込んだ進め方に変えます。レビュー・テスト・リリースまで、まとめて整えます。',
+    body: 'チームの役割分担や、要件定義からレビュー・リリースまでの進め方を見直し、AI 時代に合った開発体制に変えます。',
   },
   {
     icon: '🤖',
-    title: 'AI コーディング・開発基盤',
-    body: 'AI コーディングのツールやエージェントの導入、ルールやコンテキストの整備、CI など、AI が力を出せる開発の基盤を作ります。',
+    title: 'AI 開発基盤',
+    body: 'AI コーディングツールの選定・導入から、ルールやコンテキストの整備、CI との連携まで。AI が力を出せる環境を作ります。',
   },
   {
     icon: '📐',
@@ -49,18 +49,18 @@ const services = [
   },
   {
     icon: '💬',
-    title: 'コンサルティング',
-    body: 'AI をどう事業や開発に取り入れるか。何を AI に任せ、何を人が決めるかを、一緒に考えます。',
+    title: 'DX・AI コンサルティング',
+    body: '業務の課題を整理し、デジタル化や AI 活用の進め方を提案します。何を AI に任せ、何を人が決めるかを、一緒に考えます。',
   },
 ];
 
-const stacks = ['Web', 'iOS・Android', 'バックエンド', '生成 AI', 'AI エージェント', 'React', 'React Native', 'Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Firebase', 'AWS'];
+const stacks = ['Web', 'iOS・Android', 'フロントエンド', 'バックエンド', 'インフラ', 'UI/UX', '生成 AI', 'AI エージェント', 'Mastra', 'AI チャットボット', 'React', 'React Native', 'Flutter', 'Next.js', 'TypeScript', 'AWS', 'Dify', 'n8n', 'Figma', 'pen.dev', 'Paper', 'Linear', 'Langfuse'];
 
 const requests = [
   '新しいサービス・アプリの立ち上げ（MVP）',
   '開発チームへの AI コーディングの導入',
   '今ある Web・アプリの改善や作り直し',
-  '社内の業務やプロダクトへの AI の組み込み',
+  '業務のデジタル化（DX）や AI の組み込み',
 ];
 
 const steps = [
@@ -70,26 +70,54 @@ const steps = [
   { title: 'リリース・運用', body: '公開やストアへの申請、公開後の改善まで続けてお手伝いします。' },
 ];
 
-const works = [
-  { initial: 'P', name: 'PreferredAI Insight Scan（Preferred Networks）', body: '口コミやアンケートなど大量のテキストから、生成 AI でインサイトを見つける Web アプリの開発に参加。', tags: ['生成 AI', 'Next.js'] },
-  { initial: 'ほ', name: 'ほねなびLite（Curelity）', body: '共同創業したスタートアップで、CTO として整形外科医と開発した診療支援アプリ。病院での実証実験まで、一人で開発。', tags: ['React Native', 'Next.js'] },
-  { initial: 'g', name: 'giff letter', body: '100 画面を超えるギフトアプリの新規開発を、開発リードとしてトラブルなくリリース。', tags: ['React Native', 'Stripe'] },
-  { initial: 'B', name: 'BeatFit', body: 'オーディオフィットネスアプリを 0→1 で開発し、2 か月で初回リリース。Google Play ベスト オブ 2019 に選出。', tags: ['React Native', 'Firebase'] },
+/** 実績。icon はプロダクトのアイコン、shot は画面の画像（public/images/works/）。画像を出せない案件は emoji で出す */
+type Work = { icon?: string; shot?: string; emoji?: string; shotWhite?: boolean; name: string; company: string; url?: string; body: string; tags: string[] };
+const works: Work[] = [
+  { icon: '/images/works/pfn-icon.png', shot: '/images/works/pfn-insight-scan.jpg', shotWhite: true, name: 'PreferredAI Insight Scan', company: '株式会社Preferred Networks 様', body: '口コミやアンケートなど大量のテキストから、生成 AI でインサイトを見つけるプロダクトの開発に参加しました。', tags: ['生成 AI', 'Next.js'] },
+  { emoji: '🏛️', name: '自治体住民向け AI チャットボット', company: '地方自治体・AI 研究所との共同プロジェクト', body: '大学発の AI 研究所とともに、自治体の住民向けチャットボットを開発しました。PdM として、設計から開発基盤の構築までを担当しました。', tags: ['PdM', '生成 AI', '開発基盤'] },
+  { emoji: '🎧', name: 'コールセンター向け AI エージェント', company: 'BtoB SaaS', body: 'AI エージェントによってコールセンターなどの顧客対応業務を支える SaaS を開発しました。マルチテナント、マルチエージェント、MCP といった高度なアーキテクチャを実装しました。', tags: ['AI エージェント', 'Mastra', 'Salesforce'] },
+  { icon: '/images/works/honenavi-icon.png', shot: '/images/works/honenavi.jpg', name: 'ほねなびLite', company: '株式会社Curelity', body: '共同創業したスタートアップの CTO として、整形外科医と診療支援アプリを開発しました。日本赤十字社愛知医療センター名古屋第二病院（八事日赤）で実証実験を行いました。', tags: ['React Native', 'Next.js'] },
+  { icon: '/images/works/giff-letter.jpg', shot: '/images/works/giff-letter-shot.jpg', name: 'giff letter', company: '株式会社pamxy 様', body: '親しい相手にオンラインギフトを送る iOS・Android アプリの開発をリードしました。100 画面を超える大規模なアプリを、大きなトラブルなくリリースしました。', tags: ['React Native', 'Stripe'] },
+  { icon: '/images/works/beatfit.jpg', shot: '/images/works/beatfit-shot.jpg', name: 'BeatFit', company: '株式会社アリストル 様', url: 'https://www.beatfit.jp/b2b/', body: 'オーディオフィットネスアプリを 0→1 で開発し、2 か月で初回リリースしました。Google Play ベスト オブ 2019 に選出され、NTTドコモ・日清食品グループなど、数多くの大手企業に導入されています。', tags: ['React Native', 'Firebase'] },
+];
+
+/** メンバーの出身企業。logo が無いものは社名の文字で出す（public/images/logos/） */
+const clients: { name: string; logo?: string }[] = [
+  { name: 'Fast Retailing', logo: '/images/logos/fastretailing.svg' },
+  { name: 'DeNA', logo: '/images/logos/dena.svg' },
+  { name: 'KADOKAWA', logo: '/images/logos/kadokawa.png' },
+  { name: 'Simplex', logo: '/images/logos/simplex.png' },
 ];
 
 const company = [
   ['会社名', `${COMPANY.name}（${COMPANY.nameEn}）`],
   ['代表者', COMPANY.representative],
+  ['設立', COMPANY.founded],
   ['所在地', `${COMPANY.postalCode} ${COMPANY.address}`],
-  ['事業内容', 'Web・モバイルアプリの受託開発\n開発プロセスの改善・AI 開発基盤の構築\n設計の相談・技術顧問・PdM・FDE・コンサルティング\n自社アプリの開発・運営'],
+  ['事業内容', 'Web・モバイルアプリの受託開発\n開発プロセスの改善・AI 開発基盤の構築\n設計の相談・技術顧問・PdM・FDE\nDX・AI コンサルティング\n自社アプリの開発・運営'],
+];
+
+/** ソフトウェアの移り変わり。最後が今の段階 */
+const eras = [
+  { period: '〜2000年代', label: '大型の自社開発' },
+  { period: '2010年代〜', label: 'SaaS' },
+  { period: '2023年ごろ〜', label: '生成 AI による業務の置き換え' },
+  { period: '2026年〜', label: 'Build First' },
+];
+
+/** 自分たちで作る理由 */
+const buildReasons = [
+  { title: 'コスト', body: '使わない機能や、人数分の利用料を払い続けなくて済みます。' },
+  { title: 'コントロール', body: 'データの置き場所も、改善の順番も、自社で決められます。' },
+  { title: 'カスタマイズ', body: '業務をツールに合わせるのではなく、ツールを業務に合わせます。' },
 ];
 
 const formReady = CONTACT_FORM_ENDPOINT !== '';
 ---
 
 <Base
-  title="合同会社おいす | AIネイティブな Web・アプリ開発"
-  description="合同会社おいすは、開発のすべてを AI 前提で組み立てている開発会社です。コーディングを AI に任せられるいま、何を作り、どう作るかを決める人間の判断を担います。"
+  title="Oisu LLC | AIネイティブな Web・アプリ開発"
+  description="Oisu LLC は、開発のすべてを AI 前提で組み立てている開発会社です。コーディングを AI に任せられるいま、何を作り、どう作るかを決める人間の判断を担います。"
 >
   <!-- ヒーロー -->
   <section class="hero">
@@ -100,16 +128,16 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
       </h1>
       <p class="hero-sub">
         <span class="scribble">
-          <span class="phrase">AIネイティブ ×</span> <span class="phrase">スタートアップ開発の知見</span>
+          <span class="phrase">AIネイティブ ×</span> <span class="phrase">スタートアップ・新規事業</span>
           <svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M2 8 C 60 2, 120 11, 180 6 S 270 3, 298 7" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"></path>
+            <path pathLength="1" d="M2 8 C 60 2, 120 11, 180 6 S 270 3, 298 7" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"></path>
           </svg>
         </span>
       </p>
       <div class="hero-lead">
-        <p>合同会社おいすは、開発のすべてを <strong>AI 前提</strong>で<span class="phrase">組み立てています。</span></p>
+        <p>Oisu LLC は、プロダクト開発のすべてを <span class="phrase"><strong>AI 前提</strong>で組み立てています。</span></p>
         <p>
-          コーディングを AI に任せられるいま、価値があるのは、<br class="pc" />何を作り、どう作るかを決める<strong>人間の判断</strong>です。
+          コーディングを AI に任せられるようになったいま、大切なのは<br class="pc" /><span class="phrase">何を</span><span class="phrase">どう作るかを決める、</span><span class="phrase"><strong>ヒトの判断</strong>です。</span>
         </p>
       </div>
       <div class="hero-actions">
@@ -125,15 +153,15 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
       <div class="section-head">
         <p class="eyebrow">Concept</p>
         <h2>
-          <span class="phrase">AI に任せられない</span><span class="phrase">ことに、</span><br class="pc" /><span class="phrase">価値がある。</span>
+          <span class="phrase">AI に任せるために、</span><br class="pc" /><span class="phrase">AI にはできない仕事を。</span>
         </h2>
       </div>
       <div class="card statement">
         <p>
-          課題を見極め、それに合ったシステムを設計する。<span class="phrase">そこは、人間にしかできません。</span>
+          何を作るかを見極め、AI を導き、長く使える形に。
         </p>
         <p>
-          現場の知恵も、使い心地のよい UI/UX も、人が設計してはじめて AI で形になります。その判断を支えるのが、AI 以前から積み重ねてきた<strong>プロダクト開発の経験</strong>です。
+          現場の知恵も、使い心地のよい UI/UX も、プロの適切な設計とレビューがあってはじめて AI で形になります。判断を支えるのは、長年の<strong>プロダクト開発における蓄積</strong>です。
         </p>
       </div>
       <ol class="values-list">
@@ -152,13 +180,49 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     </div>
   </section>
 
+  <!-- Build First -->
+  <section class="section build" id="build-first">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Build First</p>
+        <h2>まず、作ってみる。</h2>
+        <p>AI で開発コストが劇的に下がったいま、自社の業務に合うものを、まず自分たちで作ってみること（Build First）が現実的な選択肢になりました。</p>
+      </div>
+      <ol class="eras">
+        {
+          eras.map((e, i) => (
+            <li class:list={['era', { 'era-now': i === eras.length - 1 }]}>
+              <span class="era-period">{e.period}</span>
+              <span>{e.label}</span>
+            </li>
+          ))
+        }
+      </ol>
+      <ul class="build-reasons">
+        {
+          buildReasons.map((r) => (
+            <li>
+              <h3>{r.title}</h3>
+              <p>{r.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="build-bridge">
+        <p class="build-bridge-lead">
+          <span class="phrase">誰でも作れるいま、</span><span class="phrase">その判断に差が出る。</span>
+        </p>
+        <p>まず作り始めることは、正しい選択です。私たちはその歩みに伴走し、プロの目線で、長く使い続けられる仕組みづくりをお手伝いします。</p>
+      </div>
+    </div>
+  </section>
+
   <!-- できること -->
   <section class="section alt" id="services">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Services</p>
         <h2>できること</h2>
-        <p>単純な受託開発だけでなく、開発の進め方や基盤づくり、設計や AI 活用の相談まで受け付けています。</p>
       </div>
       <div class="services">
         {
@@ -172,22 +236,13 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
         }
       </div>
       <div class="stacks">
-        <span class="stacks-label">対応する領域・技術</span>
+        <span class="stacks-label">対応実績のある領域・技術スタックなど</span>
         <div class="tags">
           {stacks.map((t) => (
             <span class="tag">{t}</span>
           ))}
         </div>
       </div>
-
-      <a class="card product" href="/apps/gyoseishoshi/">
-        <span class="product-label">自社プロダクト</span>
-        <div class="product-body">
-          <h3>行政書士 | 毎日ちょっとドリル</h3>
-          <p>行政書士試験の過去問を、◯×の一問一答で解く iOS アプリ。受託だけでなく、自社でもアプリを作っています。</p>
-        </div>
-        <span class="product-arrow" aria-hidden="true">→</span>
-      </a>
     </div>
   </section>
 
@@ -222,14 +277,30 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
         </ol>
       </div>
 
-      <h3 class="works-title">これまでの実績</h3>
-      <ul class="card works">
+      <h3 class="works-title" id="works">過去のプロジェクト</h3>
+      <ul class="works">
         {
           works.map((w) => (
-            <li class="work">
-              <span class="work-icon" aria-hidden="true">{w.initial}</span>
-              <div class="work-body">
-                <h4>{w.name}</h4>
+            <li class="card work">
+              <div class:list={['work-shot', { 'work-shot-emoji': !w.shot, 'work-shot-white': w.shotWhite }]}>
+                {w.shot ? <img src={w.shot} alt={`${w.name}の画面`} loading="lazy" /> : <span aria-hidden="true">{w.emoji}</span>}
+              </div>
+              <div class="work-main">
+                <div class="work-head">
+                  {w.icon && <img class="work-icon" src={w.icon} alt="" width="48" height="48" loading="lazy" />}
+                  <div>
+                    <h4>
+                      {w.url ? (
+                        <a href={w.url} target="_blank" rel="noopener noreferrer">
+                          {w.name}
+                        </a>
+                      ) : (
+                        w.name
+                      )}
+                    </h4>
+                    <p class="work-company">{w.company}</p>
+                  </div>
+                </div>
                 <p>{w.body}</p>
                 <div class="tags">
                   {w.tags.map((t) => (
@@ -237,6 +308,17 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
                   ))}
                 </div>
               </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h3 class="works-title">メンバーの出身企業</h3>
+      <ul class="logos">
+        {
+          clients.map((c) => (
+            <li class="logo-card">
+              {c.logo ? <img src={c.logo} alt={c.name} loading="lazy" /> : <span class="logo-text">{c.name}</span>}
             </li>
           ))
         }
@@ -261,6 +343,19 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
           ))
         }
       </dl>
+
+      <h3 class="works-title">代表プロフィール</h3>
+      <div class="card profile">
+        <img class="profile-photo" src="/images/profile/avatar.svg" alt="三浦 宏晃のアバター" width="120" height="120" loading="lazy" />
+        <div class="profile-body">
+          <div class="profile-head">
+            <p class="profile-name">三浦 宏晃<span>Hiroaki Miura</span></p>
+            <p class="profile-role">代表 / プロダクトマネージャー / ソフトウェアエンジニア</p>
+          </div>
+          <p>早稲田大学卒業後、DeNA、KADOKAWA、ファーストリテイリングなどで、ゲーム・メディア・EC のプロダクト開発を経験。2018年に独立し、スタートアップの 0→1 開発に多く携わってきました。</p>
+          <p>2021年に Oisu LLC を設立し、2023年には CTO としてスタートアップを共同創業。現在は PdM として、AI を前提とした開発とプロダクトの意思決定を支援しています。</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -273,6 +368,9 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
         <p>開発のご相談・お見積もり・取材など、お気軽にご連絡ください。2 営業日以内にお返事します。</p>
       </div>
       <form class="card form" id="contact-form" action={CONTACT_FORM_ENDPOINT || undefined} method="post">
+        <input type="hidden" name="_subject" value="【oisu.jp】お問い合わせ" />
+        <!-- 迷惑投稿よけ。人には見えず、ボットが入力すると Formspree が破棄する -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
         <label>
           <span>お名前</span>
           <input name="name" autocomplete="name" required />
@@ -289,7 +387,7 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
           <span>ご相談の内容</span>
           <textarea name="message" rows="6" required></textarea>
         </label>
-        <p class="note">いただいた情報は、お問い合わせへの返信のためだけに使います。</p>
+        <p class="note">いただいた情報は、お問い合わせへの返信のためだけに使います。送信することで、<a href="/privacy/">プライバシーポリシー</a>に同意したものとします。</p>
         <button class="btn btn-accent" type="submit" disabled={!formReady}>送信する</button>
         {!formReady && <p class="note">フォームは準備中です。</p>}
         <p class="result" role="status" aria-live="polite"></p>
@@ -300,6 +398,15 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
 
 <script>
   // お問い合わせの送信。ページを離れずに送り、結果をフォームの下に出す
+  type PostHogClient = {
+    capture: (event: string) => void;
+    logger?: {
+      info: (message: string, attributes?: Record<string, string>) => void;
+      warn: (message: string, attributes?: Record<string, string>) => void;
+    };
+  };
+
+  const getPostHog = () => (window as Window & { posthog?: PostHogClient }).posthog;
   const form = document.querySelector<HTMLFormElement>('#contact-form');
   const result = form?.querySelector<HTMLElement>('.result');
   form?.addEventListener('submit', async (e) => {
@@ -317,7 +424,11 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
       if (!res.ok) throw new Error(String(res.status));
       form.reset();
       result.textContent = '送信しました。お返事まで少しお待ちください。';
+      // 入力内容は送らず、送信できたことだけを記録する
+      getPostHog()?.capture('contact_submitted');
+      getPostHog()?.logger?.info('contact form submitted', { form: 'contact' });
     } catch {
+      getPostHog()?.logger?.warn('contact form submission failed', { form: 'contact' });
       result.textContent = '送信できませんでした。時間をおいて、もう一度お試しください。';
     } finally {
       if (button) button.disabled = false;
@@ -344,12 +455,13 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     align-self: center;
   }
   .hero h1 {
-    /* 1 行 10 文字ほどの見出しが、スマホでも 1 行に収まる大きさ */
-    font-size: clamp(28px, 7.4vw, 72px);
+    /* 1 行 9 文字の見出しが、スマホでも 1 行に収まる大きさ */
+    font-size: clamp(30px, 9.4vw, 72px);
     line-height: 1.2;
   }
   .hero-sub {
-    font-size: clamp(20px, 3.4vw, 30px);
+    /* スマホでも 1 行に収める */
+    font-size: clamp(13px, 4.3vw, 30px);
     font-weight: 900;
   }
   .hero-lead {
@@ -359,6 +471,44 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     max-width: 720px;
     color: var(--ink);
     font-size: clamp(15px, 2vw, 18px);
+  }
+  /* ヒーローの登場と、下線を引く動き */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-inner > * {
+      animation: hero-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+    .hero-inner > :nth-child(2) {
+      animation-delay: 0.08s;
+    }
+    .hero-inner > :nth-child(3) {
+      animation-delay: 0.18s;
+    }
+    .hero-inner > :nth-child(4) {
+      animation-delay: 0.28s;
+    }
+    .hero-inner > :nth-child(5) {
+      animation-delay: 0.38s;
+    }
+    .hero-sub path {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: draw-line 0.8s 0.55s ease-out forwards;
+    }
+  }
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes draw-line {
+    to {
+      stroke-dashoffset: 0;
+    }
   }
   .hero-actions {
     display: flex;
@@ -372,6 +522,102 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     background: var(--bg-alt);
     border-top: var(--line);
     border-bottom: var(--line);
+  }
+
+  /* Build First。ページの中で 1 か所だけ黒い帯にして、主張を立たせる */
+  .build {
+    background: var(--ink);
+    color: #f5efe6;
+  }
+  .build .section-head p:not(.eyebrow) {
+    color: #cfc5b8;
+  }
+  .eras {
+    list-style: none;
+    margin: 0 0 48px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  .era {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-height: 88px;
+    padding: 10px 14px;
+    border: 2px solid #6f675d;
+    border-radius: var(--radius-sm);
+    color: #cfc5b8;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+  }
+  .era-period {
+    color: #b8ad9f;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .era-now .era-period {
+    color: var(--on-accent);
+  }
+  .era:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    transform: translateY(-50%);
+    color: #b8ad9f;
+    font-weight: 700;
+  }
+  .era-now {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--on-accent);
+    font-size: 18px;
+    font-weight: 900;
+  }
+  .build-reasons {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .build-reasons li {
+    padding-top: 16px;
+    border-top: 3px solid var(--accent);
+  }
+  .build-reasons h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+  }
+  .build-reasons p {
+    color: #cfc5b8;
+    font-size: 15px;
+  }
+
+  /* Build First の締め。コンセプトの「人の判断」へ話を戻す */
+  .build-bridge {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 48px;
+    padding: 28px 32px;
+    border-radius: var(--radius);
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+  .build-bridge-lead {
+    font-size: clamp(20px, 2.6vw, 26px);
+    font-weight: 900;
+    line-height: 1.45;
   }
 
   .services {
@@ -392,8 +638,7 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     height: 52px;
     border: var(--line);
     border-radius: var(--radius-sm);
-    /* 絵文字が見やすいよう、面はクリーム色（差し色は使わない） */
-    background: var(--bg);
+    background: var(--accent);
     font-size: 26px;
   }
   .service h3 {
@@ -416,6 +661,7 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     gap: 10px 20px;
   }
   .stacks-label {
+    width: 100%;
     font-size: 14px;
     font-weight: 700;
   }
@@ -451,6 +697,7 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     gap: 16px;
   }
   .value-no {
+    flex-shrink: 0;
     font-weight: 900;
     font-size: 32px;
     line-height: 1;
@@ -467,57 +714,11 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     font-size: 15px;
   }
 
-  .product {
-    margin-top: 64px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 24px 28px;
-    text-decoration: none;
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-  }
-  .product:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: var(--shadow-lg);
-  }
-  .product-label {
-    flex-shrink: 0;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border: var(--line);
-    border-radius: 999px;
-    background: var(--bg);
-  }
-  .product-body {
-    flex: 1;
-  }
-  .product h3 {
-    font-size: 20px;
-  }
-  .product p {
-    color: var(--ink-muted);
-    font-size: 15px;
-  }
-  .product-arrow {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    border: var(--line);
-    border-radius: 50%;
-    background: var(--accent);
-    color: var(--on-accent);
-    font-weight: 900;
-    font-size: 20px;
-  }
-
+  /* 上に相談の例、下に進め方を横並びで置く */
   .dev-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
+    display: flex;
+    flex-direction: column;
     gap: 24px;
-    align-items: start;
   }
   .requests {
     padding: 28px;
@@ -530,13 +731,14 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     margin: 0;
     padding: 0;
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 32px;
   }
   .requests li {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 12px;
     font-weight: 500;
   }
   .requests li::before {
@@ -546,7 +748,6 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     place-items: center;
     width: 24px;
     height: 24px;
-    margin-top: 2px;
     border: 2px solid var(--ink);
     border-radius: 50%;
     background: var(--accent);
@@ -558,15 +759,15 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
   .step {
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 18px 22px;
+    flex-direction: column;
+    gap: 12px;
+    padding: 22px;
   }
   .step-no {
     flex-shrink: 0;
@@ -589,6 +790,9 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     font-size: 15px;
   }
 
+  #works {
+    scroll-margin-top: 24px;
+  }
   .works-title {
     font-size: 24px;
     margin: 64px 0 24px;
@@ -597,37 +801,116 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     list-style: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
   .work {
     display: flex;
-    gap: 20px;
-    padding: 20px 24px;
+    flex-direction: column;
+    overflow: hidden;
   }
-  .work + .work {
-    border-top: var(--line);
+  /* 画面の画像。切らずに全体を見せる */
+  .work-shot {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-bottom: var(--line);
+    background: var(--bg);
+  }
+  /* 画像を出せない案件。画像の余白と同じ背景に絵文字を置く */
+  .work-shot-emoji {
+    display: grid;
+    place-items: center;
+    font-size: 72px;
+    line-height: 1;
+  }
+  .work-shot img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .work-shot-white {
+    background: var(--surface);
+  }
+  /* 行数が違っても、タグをカードの下端にそろえる */
+  .work-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 22px 24px 24px;
+  }
+  .work-main .tags {
+    margin-top: auto;
+    padding-top: 4px;
+  }
+  .work-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 48px;
   }
   .work-icon {
     flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border: var(--line);
+    border-radius: 12px;
+    object-fit: cover;
+    background: var(--surface);
+  }
+  .logos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .logo-card {
     display: grid;
     place-items: center;
-    width: 56px;
-    height: 56px;
-    border: var(--line);
-    border-radius: 14px;
-    background: var(--bg);
-    font-weight: 900;
-    font-size: 22px;
+    height: 72px;
+    padding: 8px 12px;
   }
-  .work-body {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  .logo-card img {
+    max-width: min(100%, 150px);
+    max-height: 38px;
+    object-fit: contain;
+    opacity: 0.7;
+  }
+  .logo-text {
+    opacity: 0.7;
+    font-weight: 900;
+    font-size: 15px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  @media (max-width: 640px) {
+    .works {
+      grid-template-columns: 1fr;
+    }
+    .logos {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .work .work-company {
+    color: var(--ink-muted);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
   }
   .work h4 {
-    margin: 0;
+    margin: 0 0 2px;
     font-size: 18px;
     font-weight: 900;
+    line-height: 1.35;
+  }
+  .work h4 a {
+    text-underline-offset: 3px;
   }
   .work p {
     color: var(--ink-muted);
@@ -655,6 +938,50 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     margin: 0;
     padding: 18px 24px;
     white-space: pre-line;
+  }
+
+  .profile {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 28px 32px;
+  }
+  .profile-photo {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border: var(--line);
+    border-radius: 50%;
+    background: var(--surface);
+    object-fit: cover;
+  }
+  .profile-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+  .profile-head {
+    margin-bottom: 4px;
+  }
+  .profile-name {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.4;
+  }
+  .profile-name span {
+    color: var(--ink-muted);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .profile-role {
+    color: var(--ink-muted);
+    font-size: 14px;
+    font-weight: 700;
   }
 
   .contact {
@@ -698,47 +1025,68 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     font-size: 13px;
     color: var(--ink-muted);
   }
+  .result {
+    font-weight: 700;
+  }
   .result:empty {
     display: none;
   }
 
   @media (max-width: 860px) {
-    .services,
+    .services {
+      grid-template-columns: repeat(2, 1fr);
+    }
     .values-list {
       grid-template-columns: 1fr;
     }
-    .dev-grid {
+    .steps,
+    .eras {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    /* 2 列では、行の折り返しで矢印の向きが合わないので出さない */
+    .eras {
+      gap: 12px;
+    }
+    .era::after {
+      display: none;
+    }
+  }
+  @media (max-width: 640px) {
+    .services,
+    .requests ul,
+    .steps,
+    .build-reasons {
       grid-template-columns: 1fr;
+    }
+    .build-reasons {
+      gap: 24px;
+    }
+    .build-bridge {
+      margin-top: 36px;
+      padding: 24px 22px;
+    }
+    /* スマホの手順は、番号を左に置く */
+    .step {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 20px;
     }
   }
   @media (max-width: 560px) {
     .hero {
       padding: 64px 0 72px;
     }
-    /* スマホでは、ラベルと矢印を上の行に、説明を下の行に */
-    .product {
-      flex-wrap: wrap;
+    .work-main {
+      padding: 18px 20px 20px;
+    }
+    .service,
+    .requests {
       padding: 22px;
-      gap: 14px;
     }
-    .product-arrow {
-      order: 2;
-      margin-left: auto;
-      width: 40px;
-      height: 40px;
-    }
-    .product-body {
-      order: 3;
-      flex-basis: 100%;
-    }
-    .work {
-      padding: 18px;
-      gap: 14px;
-    }
-    .work-icon {
-      width: 44px;
-      height: 44px;
-      font-size: 18px;
+    .statement {
+      padding: 24px 22px;
+      margin-bottom: 36px;
     }
     .company-row {
       grid-template-columns: 1fr;
@@ -750,6 +1098,15 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     }
     .company dd {
       padding: 14px 18px;
+    }
+    .profile {
+      flex-direction: column;
+      gap: 16px;
+      padding: 22px;
+    }
+    .profile-photo {
+      width: 96px;
+      height: 96px;
     }
     .form {
       padding: 20px;

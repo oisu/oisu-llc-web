@@ -1,4 +1,4 @@
-/* 色・線・影・角丸。差し色（--accent / --on-accent）は html の data-accent で変わる（既定はレモンイエロー） */
+/* 色・線・影・角丸。差し色はレモンイエロー */
 :root {
   --bg: #fbecd9;
   --bg-alt: #f6dfc3;
@@ -17,20 +17,22 @@
   --gutter: 20px;
 }
 
-html[data-accent="mint"] { --accent: #3dd9a0; --on-accent: #0a0a0a; }
-html[data-accent="lime"] { --accent: #b8f24a; --on-accent: #0a0a0a; }
-html[data-accent="coral"] { --accent: #ff5b4a; --on-accent: #ffffff; }
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* スクロールの端で引っぱったときに見える色。上はヘッダーの白、下はフッターの黒（Base.astro で切り替える） */
 html {
+  background: var(--surface);
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  /* ページ内リンクで、セクションの上端をヘッダーの直下に合わせる */
+  scroll-padding-top: 72px;
   -webkit-text-size-adjust: 100%;
+}
+html[data-edge="bottom"] {
+  background: var(--ink);
 }
 
 body {
@@ -63,6 +65,20 @@ h3 {
 
 p {
   margin: 0;
+}
+
+/* 日本語を文節で折り返し、最後の行に 1〜2 文字だけ残らないようにする */
+p,
+li,
+dd {
+  word-break: auto-phrase;
+  text-wrap: pretty;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
 }
 
 .container {
@@ -208,6 +224,29 @@ p {
 @media (max-width: 640px) {
   .section {
     padding: 64px 0;
+  }
+}
+
+/* スクロールで現れる動き（クラスは Base.astro の script が付ける） */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+/* ページ内リンクの移動先は、位置がずれないよう動かさない */
+.works-title.reveal {
+  transform: none;
+}
+@media print {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 

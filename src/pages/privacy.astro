@@ -1,0 +1,220 @@
+---
+import Base from '../layouts/Base.astro';
+import { COMPANY } from '../config';
+
+/** 外部に送る情報の一覧。使うサービスを変えたら、ここも直す */
+const services = [
+  {
+    name: 'Formspree',
+    provider: 'Formspree, Inc.（アメリカ合衆国）',
+    data: 'お問い合わせの入力内容、IP アドレス、ブラウザの情報',
+    purpose: 'お問い合わせの受付と、当社への通知',
+    url: 'https://formspree.io/legal/privacy-policy/',
+  },
+  {
+    name: 'PostHog',
+    provider: 'PostHog, Inc.（アメリカ合衆国）',
+    data: '閲覧したページ、参照元、リンクやボタンのクリック、ブラウザ・端末の情報、IP アドレス、Cookie などの識別子、ページのエラー情報',
+    purpose: 'アクセス状況の分析と、本サイトの改善',
+    url: 'https://posthog.com/privacy',
+  },
+  {
+    name: 'Vercel',
+    provider: 'Vercel Inc.（アメリカ合衆国）',
+    data: 'IP アドレス、ブラウザの情報、アクセス日時、閲覧したページ',
+    purpose: '本サイトの配信と、安全な運用',
+    url: 'https://vercel.com/legal/privacy-policy',
+  },
+  {
+    name: 'Google Fonts',
+    provider: 'Google LLC（アメリカ合衆国）',
+    data: 'IP アドレス、ブラウザの情報',
+    purpose: '本サイトの文字（Web フォント）の表示',
+    url: 'https://policies.google.com/privacy',
+  },
+];
+---
+
+<Base
+  title="プライバシーポリシー | Oisu LLC"
+  description="合同会社おいす（Oisu LLC）のウェブサイトにおける、個人情報とアクセス情報の取り扱いについて定めたプライバシーポリシーです。"
+>
+  <section class="section policy-section">
+    <div class="container policy">
+      <div class="section-head">
+        <p class="eyebrow">Privacy Policy</p>
+        <h1>プライバシーポリシー</h1>
+        <p>制定日 2026年11月22日</p>
+      </div>
+
+      <p>
+        {COMPANY.name}（以下「当社」）は、当社のウェブサイト（https://oisu.jp/。以下「本サイト」）における利用者の情報の取り扱いについて、個人情報の保護に関する法律その他の関係法令を守り、次のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。当社のアプリなど、個別のポリシーがあるサービスには、そのポリシーが適用されます。
+      </p>
+
+      <h2>1. 取得する情報</h2>
+      <p>当社は、本サイトで次の情報を取得します。</p>
+      <ul>
+        <li><strong>お問い合わせの情報:</strong> お名前、メールアドレス、会社名（任意）、ご相談の内容</li>
+        <li><strong>アクセスの情報:</strong> 閲覧したページ、参照元、リンクやボタンのクリック、お問い合わせの送信の有無、ブラウザ・端末の情報、IP アドレス、Cookie などの識別子、おおよその地域、ページのエラー情報</li>
+      </ul>
+      <p>アクセスの分析には、お問い合わせの入力内容を送信しません。また、画面の録画は行いません。</p>
+
+      <h2>2. 利用目的</h2>
+      <ul>
+        <li>お問い合わせへの返信と、ご相談への対応</li>
+        <li>本サイトの利用状況の分析と、内容・使いやすさの改善</li>
+        <li>不具合の調査、不正なアクセスや迷惑な投稿の防止</li>
+      </ul>
+
+      <h2>3. Cookie とアクセス解析</h2>
+      <p>
+        本サイトは、アクセス状況を分析するために、PostHog を利用しています。PostHog は、Cookie やブラウザの保存領域を使って、同じブラウザからの訪問を識別します。これらの情報だけで、当社がお名前などの個人を特定することはありません。
+      </p>
+      <p>Cookie の保存は、ブラウザの設定で拒否・削除できます。拒否した場合も、本サイトの閲覧とお問い合わせはご利用いただけます。</p>
+
+      <h2>4. 外部サービスへの情報の送信</h2>
+      <p>本サイトでは、次のサービスに情報が送信されます。各サービスでの取り扱いは、それぞれのプライバシーポリシーをご確認ください。</p>
+      <div class="service-list">
+        {
+          services.map((s) => (
+            <dl class="service-item">
+              <div>
+                <dt>サービス</dt>
+                <dd>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer">
+                    {s.name}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt>提供者</dt>
+                <dd>{s.provider}</dd>
+              </div>
+              <div>
+                <dt>送信する情報</dt>
+                <dd>{s.data}</dd>
+              </div>
+              <div>
+                <dt>利用目的</dt>
+                <dd>{s.purpose}</dd>
+              </div>
+            </dl>
+          ))
+        }
+      </div>
+
+      <h2>5. 外国にある第三者への提供</h2>
+      <p>
+        前項のサービスの提供者はアメリカ合衆国の事業者であり、お問い合わせの内容やアクセスの情報は、同国などのサーバーで取り扱われます。アメリカ合衆国には、日本の個人情報の保護に関する法律に相当する、連邦レベルの包括的な法律はなく、分野ごとの法律や州法（カリフォルニア州など）が適用されます。同国の制度については、
+        <a href="https://www.ppc.go.jp/enforcement/infoprovision/laws/offshore_report_america/" target="_blank" rel="noopener noreferrer">個人情報保護委員会の資料</a>
+        もご確認ください。
+      </p>
+      <p>各事業者は、それぞれのプライバシーポリシーに従って情報を取り扱います。利用者は、本ポリシーを確認のうえお問い合わせを送信することで、上記の提供に同意したものとします。同意しない場合は、フォームを送信しないでください。</p>
+
+      <h2>6. 第三者への提供</h2>
+      <p>当社は、本ポリシーに定める場合、法令に基づく場合、人の生命・身体・財産の保護に必要な場合などを除き、利用者の同意なく個人データを第三者に提供しません。</p>
+
+      <h2>7. 安全管理</h2>
+      <ul>
+        <li>お問い合わせの情報を取り扱う者を代表者に限り、利用目的の範囲を超えて取り扱いません。</li>
+        <li>本サイトとお問い合わせの通信は、暗号化（HTTPS）して行います。</li>
+        <li>外部サービスの管理画面へのアクセスを、認証によって制限します。</li>
+        <li>外国の事業者のサービスを使うにあたり、その国の個人情報の保護に関する制度を把握したうえで取り扱います。</li>
+      </ul>
+
+      <h2>8. 保存期間</h2>
+      <p>取得した情報は、利用目的の達成に必要な期間保存し、不要になったものは遅滞なく削除するよう努めます。</p>
+
+      <h2>9. 開示・訂正・利用停止などの請求</h2>
+      <p>利用者は、当社が保有する自己の個人情報について、法令に基づき、開示・訂正・追加・削除・利用停止・第三者提供の停止を請求できます。請求は、次項のお問い合わせ先までご連絡ください。本人であることを確認したうえで、遅滞なく対応します。</p>
+
+      <h2>10. お問い合わせ先</h2>
+      <dl class="contact-info">
+        <div><dt>事業者</dt><dd>{COMPANY.name}（{COMPANY.nameEn}）</dd></div>
+        <div><dt>代表者</dt><dd>{COMPANY.representative}</dd></div>
+        <div><dt>所在地</dt><dd>{COMPANY.postalCode} {COMPANY.address}</dd></div>
+        <div><dt>窓口</dt><dd><a href="/#contact">お問い合わせフォーム</a></dd></div>
+      </dl>
+
+      <h2>11. 本ポリシーの変更</h2>
+      <p>当社は、法令の改正や本サイトの変更に合わせて、本ポリシーを変更することがあります。変更後の内容は、本ページに掲載した時点から効力を生じます。</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .policy {
+    max-width: 800px;
+  }
+  .policy h1 {
+    font-size: clamp(28px, 5vw, 40px);
+  }
+  .policy h2 {
+    margin: 44px 0 12px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+  .policy > p + p {
+    margin-top: 10px;
+  }
+  .policy ul {
+    margin: 10px 0 0;
+    padding-left: 1.3em;
+  }
+  .policy li + li {
+    margin-top: 6px;
+  }
+  .policy a {
+    text-underline-offset: 3px;
+  }
+  .service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .service-item,
+  .contact-info {
+    margin: 0;
+    overflow: hidden;
+    border: var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+  }
+  .contact-info {
+    margin-top: 14px;
+  }
+  .service-item > div,
+  .contact-info > div {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+  }
+  .service-item > div + div,
+  .contact-info > div + div {
+    border-top: 2px solid var(--bg-alt);
+  }
+  .policy dt {
+    padding: 9px 14px;
+    background: var(--bg);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .policy dd {
+    margin: 0;
+    padding: 9px 14px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  @media (max-width: 560px) {
+    .service-item > div,
+    .contact-info > div {
+      grid-template-columns: 1fr;
+    }
+    .policy dt {
+      padding: 6px 12px;
+    }
+    .policy dd {
+      padding: 8px 12px;
+    }
+  }
+</style>

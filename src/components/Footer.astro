@@ -5,23 +5,32 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
-  <div class="container inner">
-    <div>
-      <p class="name">{COMPANY.name}</p>
-      <p class="muted">{COMPANY.postalCode} {COMPANY.address}</p>
+  <div class="container">
+    <div class="top">
+      <div class="brand">
+        <p class="name">{COMPANY.nameEn}</p>
+        <p class="muted">{COMPANY.postalCode}<br />{COMPANY.address}</p>
+      </div>
     </div>
-    <ul class="links">
-      {
-        SOCIALS.map((s) => (
-          <li>
-            <a href={s.url} target="_blank" rel="noopener">
-              {s.label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-    <p class="copy">© {year} {COMPANY.nameEn}</p>
+    <div class="bottom">
+      <ul class="social">
+        {
+          SOCIALS.map((s) => (
+            <li>
+              <a href={s.url} target="_blank" rel="noopener" aria-label={s.label}>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                  <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                </svg>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="legal">
+        <a href="/privacy/">プライバシーポリシー</a>
+        <p class="copy">© {year} {COMPANY.nameEn}</p>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -30,39 +39,72 @@ const year = new Date().getFullYear();
     border-top: var(--line);
     background: var(--ink);
     color: #f5efe6;
-    padding: 40px 0;
+    padding: 56px 0 16px;
   }
-  .inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    gap: 24px;
+  /* 上段: 会社情報 */
+  .top {
+    padding-bottom: 40px;
   }
   .name {
+    margin-bottom: 8px;
     font-weight: 900;
     font-size: 18px;
   }
   .muted {
     color: #b8ad9f;
     font-size: 14px;
+    line-height: 1.7;
   }
-  .links {
+  /* 下段: 区切り線の下に、左に SNS、右にコピーライト */
+  .bottom {
     display: flex;
-    gap: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    font-weight: 700;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(245, 239, 230, 0.2);
+  }
+  .legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2px 18px;
+  }
+  .legal a {
+    color: #b8ad9f;
+    font-size: 13px;
+    text-underline-offset: 3px;
+  }
+  .legal a:hover {
+    color: #f5efe6;
   }
   .copy {
-    margin-left: auto;
     color: #b8ad9f;
-    font-size: 14px;
+    font-size: 13px;
+  }
+  .social {
+    display: flex;
+    list-style: none;
+    /* アイコンの左端を、本文の左端にそろえる */
+    margin: 0 0 0 -13px;
+    padding: 0;
+  }
+  .social a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+  }
+  .social a:hover {
+    color: var(--accent);
   }
   @media (max-width: 640px) {
-    .copy {
-      margin-left: 0;
-      width: 100%;
+    .footer {
+      padding-top: 40px;
+    }
+    .top {
+      padding-bottom: 32px;
     }
   }
 </style>
