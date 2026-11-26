@@ -11,6 +11,10 @@ const year = new Date().getFullYear();
         <p class="name">{COMPANY.nameEn}</p>
         <p class="muted">{COMPANY.postalCode}<br />{COMPANY.address}</p>
       </div>
+      <!-- SECURITY ACTION のロゴ。ガイドラインに従い、白地の上に高さ 34px 以上で、加工せずに置く -->
+      <a class="security-action" href="/security/" aria-label="情報セキュリティ基本方針">
+        <img src="/images/security-action/futatsuboshi-bw.png" alt="SECURITY ACTION 二つ星 セキュリティ対策自己宣言" width="72" height="72" loading="lazy" />
+      </a>
     </div>
     <div class="bottom">
       <ul class="social">
@@ -27,6 +31,7 @@ const year = new Date().getFullYear();
         }
       </ul>
       <div class="legal">
+        <a href="/security/">情報セキュリティ基本方針</a>
         <a href="/privacy/">プライバシーポリシー</a>
         <p class="copy">© {year} {COMPANY.nameEn}</p>
       </div>
@@ -43,7 +48,23 @@ const year = new Date().getFullYear();
   }
   /* 上段: 会社情報 */
   .top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
     padding-bottom: 40px;
+  }
+  /* 黒地では白黒のロゴが見えないため、白い台紙の上に置く */
+  .security-action {
+    flex-shrink: 0;
+    padding: 6px;
+    border-radius: 8px;
+    background: #fff;
+    line-height: 0;
+  }
+  .security-action img {
+    width: 72px;
+    height: 72px;
   }
   .name {
     margin-bottom: 8px;
