@@ -38,6 +38,9 @@
   p, li { word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
   /* ひとかたまりで読ませたい言葉は、途中で折り返さない */
   .nw { white-space: nowrap; }
+  /* スマホのときだけ入れる改行 */
+  br.sp { display: none; }
+  @media (max-width: 600px) { br.sp { display: inline; } }
   .center { text-align: center; }
   .muted { color: var(--muted); }
   .pill-btn { display: inline-flex; align-items: center; gap: 8px; background: #000; color: #fff; text-decoration: none; font-size: 15px; padding: 14px 26px; border-radius: 80px; border: 0; cursor: pointer; font-family: inherit; }
@@ -82,7 +85,7 @@
 
   /* ヒーロー */
   /* 動画を外へ広げたぶんで、ページが横にスクロールしないように */
-  .hero { padding: 72px 0 40px; overflow-x: clip; }
+  .hero { padding: 40px 0 40px; overflow-x: clip; }
   .hero .wrap { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; align-items: center; }
   .hero h1 { font-size: clamp(46px, 5.8vw, 80px); line-height: 1.16; margin-top: 28px; font-weight: 700; letter-spacing: -.01em; }
   .hero h1 em { color: var(--accent); }
@@ -158,6 +161,7 @@
   @media (max-width: 600px) {
     /* ヘッダーは「おいすラボ」と「相談する」だけにする */
     header.top .ext-link { display: none; }
+    .hero { padding-top: 28px; }
     .hero .stage { max-width: none; }
     header.top .ext-link + .pill-btn { margin-left: auto; }
     header.top .logo { padding-right: 0; border-right: 0; }
@@ -442,7 +446,7 @@
 <!-- つくれるもの（流れるチップ） -->
 <section id="for">
   <div class="wrap">
-    <div class="sec-head"><h2>機能は、<em>必要なだけ</em>。</h2><p>AI の活用によって、機能の追加・変更にかかるコストは大きく下がりました。<br>作りながら、一緒に考えることもできます。</p></div>
+    <div class="sec-head"><h2>機能は、<em>必要なだけ</em>。</h2><p>AI の活用によって、<br class="sp">機能の追加・変更にかかるコストは<br class="sp">大きく下がりました。<br>作りながら、一緒に考えることもできます。</p></div>
   </div>
   <div class="marquee" id="marquee">
     <div class="track"></div>
@@ -454,8 +458,8 @@
 <section id="features">
   <div class="wrap">
     <div class="sec-head">
-      <h2><em>AI 時代</em>の前提で考える。</h2>
-      <p>つくり方が変われば、できることも変わります。</p>
+      <h2><em>AI 時代</em>の<br class="sp">前提で考える。</h2>
+      <p>つくり方が変われば、<br class="sp">できることも変わります。</p>
     </div>
 
     <div class="bento">
