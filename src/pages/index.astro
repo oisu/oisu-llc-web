@@ -251,12 +251,12 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
         <span class="project-more">おいすラボを見る <span aria-hidden="true">→</span></span>
       </a>
       <!-- 行政書士アプリ。紹介動画は flashcards リポジトリの promo/（Remotion）で書き出したもの（540×960） -->
-      <a class="card project-link project-app" href="/apps/gyoseishoshi/">
+      <div class="card project-link project-app">
         <span class="project-app-text">
           <span class="project-badge">iOS App</span>
           <span class="project-name"><span class="nowrap">行政書士 |</span> <span class="nowrap">毎日ちょっとドリル</span></span>
-          <span class="project-body">行政書士試験の過去問を、◯✕の一問一答でくり返し解く iOS アプリです。苦手な問題だけを出し直し、学習の記録は端末の中に保存します。アカウント登録・広告はありません。無料・近日公開。</span>
-          <span class="project-more">サポートページを見る <span aria-hidden="true">→</span></span>
+          <span class="project-body">行政書士試験の受験経験から、過去問を ◯ ✕ の一問一答でくり返し解く iOS アプリを制作しました。他の資格試験、クイズ、フラッシュカードなどにも応用できる作りになっています。近日公開予定です。</span>
+          <a class="project-more" href="/projects/gyoseishoshi/promo-1080.mp4" target="_blank" rel="noopener">動画を拡大して見る <span aria-hidden="true">→</span></a>
         </span>
         <video
           class="project-app-video"
@@ -268,7 +268,7 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
           playsinline
           aria-label="アプリの紹介動画。◯✕で答えると解説が出て、苦手な問題だけをくり返し、6 つのデザインから選べる様子"
         ></video>
-      </a>
+      </div>
 
       <h3 class="works-title">過去のプロジェクト（一部抜粋）</h3>
       <ul class="works">
@@ -753,6 +753,14 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     text-underline-offset: 4px;
   }
   /* 行政書士アプリ：左に説明、右に縦長の紹介動画。おいすラボのカードとの間を空ける */
+  /* リンクではないので、押せるように見せない（浮き上がりは「動画を拡大して見る」だけ） */
+  .project-app:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+  }
+  .project-app .project-more {
+    color: inherit;
+  }
   .project-app {
     margin-top: 24px;
     grid-template-columns: 1fr auto;
