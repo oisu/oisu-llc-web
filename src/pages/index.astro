@@ -98,20 +98,6 @@ const company = [
 ];
 
 /** ソフトウェアの移り変わり。最後が今の段階 */
-const eras = [
-  { period: '〜2000年代', label: '大型の自社開発' },
-  { period: '2010年代〜', label: 'SaaS' },
-  { period: '2023年ごろ〜', label: '生成 AI による業務の置き換え' },
-  { period: '2026年〜', label: 'Build First' },
-];
-
-/** 自分たちで作る理由 */
-const buildReasons = [
-  { title: 'コスト', body: '使わない機能や、人数分の利用料を払い続けなくて済みます。' },
-  { title: 'コントロール', body: 'データの置き場所も、改善の順番も、自社で決められます。' },
-  { title: 'カスタマイズ', body: '業務をツールに合わせるのではなく、ツールを業務に合わせます。' },
-];
-
 const formReady = CONTACT_FORM_ENDPOINT !== '';
 ---
 
@@ -188,26 +174,6 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
         <h2>まず、作ってみる。</h2>
         <p>AI で開発コストが劇的に下がったいま、自社の業務に合うものを、まず自分たちで作ってみること（Build First）が現実的な選択肢になりました。</p>
       </div>
-      <ol class="eras">
-        {
-          eras.map((e, i) => (
-            <li class:list={['era', { 'era-now': i === eras.length - 1 }]}>
-              <span class="era-period">{e.period}</span>
-              <span>{e.label}</span>
-            </li>
-          ))
-        }
-      </ol>
-      <ul class="build-reasons">
-        {
-          buildReasons.map((r) => (
-            <li>
-              <h3>{r.title}</h3>
-              <p>{r.body}</p>
-            </li>
-          ))
-        }
-      </ul>
       <div class="build-bridge">
         <p class="build-bridge-lead">
           <span class="phrase">誰でも作れるいま、</span><span class="phrase">その判断に差が出る。</span>
@@ -283,6 +249,25 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
         <span class="project-name">おいすラボ</span>
         <span class="project-body">AI を活用して、観光・地域・お店のアプリをつくり、リリース後の運用まで伴走するプロジェクトです。スタンプラリーや観光アプリのプロトタイプを公開しています。</span>
         <span class="project-more">おいすラボを見る <span aria-hidden="true">→</span></span>
+      </a>
+      <!-- 行政書士アプリ。紹介動画は flashcards リポジトリの promo/（Remotion）で書き出したもの（540×960） -->
+      <a class="card project-link project-app" href="/apps/gyoseishoshi/">
+        <span class="project-app-text">
+          <span class="project-badge">iOS App</span>
+          <span class="project-name"><span class="nowrap">行政書士 |</span> <span class="nowrap">毎日ちょっとドリル</span></span>
+          <span class="project-body">行政書士試験の過去問を、◯✕の一問一答でくり返し解く iOS アプリです。苦手な問題だけを出し直し、学習の記録は端末の中に保存します。アカウント登録・広告はありません。無料・近日公開。</span>
+          <span class="project-more">サポートページを見る <span aria-hidden="true">→</span></span>
+        </span>
+        <video
+          class="project-app-video"
+          src="/projects/gyoseishoshi/promo.mp4"
+          poster="/projects/gyoseishoshi/poster.jpg"
+          autoplay
+          muted
+          loop
+          playsinline
+          aria-label="アプリの紹介動画。◯✕で答えると解説が出て、苦手な問題だけをくり返し、6 つのデザインから選べる様子"
+        ></video>
       </a>
 
       <h3 class="works-title">過去のプロジェクト（一部抜粋）</h3>
@@ -540,76 +525,6 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
   .build .section-head p:not(.eyebrow) {
     color: #cfc5b8;
   }
-  .eras {
-    list-style: none;
-    margin: 0 0 48px;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 28px;
-  }
-  .era {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    min-height: 88px;
-    padding: 10px 14px;
-    border: 2px solid #6f675d;
-    border-radius: var(--radius-sm);
-    color: #cfc5b8;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1.4;
-    text-align: center;
-  }
-  .era-period {
-    color: #b8ad9f;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-  }
-  .era-now .era-period {
-    color: var(--on-accent);
-  }
-  .era:not(:last-child)::after {
-    content: "→";
-    position: absolute;
-    top: 50%;
-    right: -22px;
-    transform: translateY(-50%);
-    color: #b8ad9f;
-    font-weight: 700;
-  }
-  .era-now {
-    border-color: var(--accent);
-    background: var(--accent);
-    color: var(--on-accent);
-    font-size: 18px;
-    font-weight: 900;
-  }
-  .build-reasons {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-  }
-  .build-reasons li {
-    padding-top: 16px;
-    border-top: 3px solid var(--accent);
-  }
-  .build-reasons h3 {
-    margin-bottom: 8px;
-    font-size: 20px;
-  }
-  .build-reasons p {
-    color: #cfc5b8;
-    font-size: 15px;
-  }
 
   /* Build First の締め。コンセプトの「人の判断」へ話を戻す */
   .build-bridge {
@@ -836,6 +751,38 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 4px;
+  }
+  /* 行政書士アプリ：左に説明、右に縦長の紹介動画。おいすラボのカードとの間を空ける */
+  .project-app {
+    margin-top: 24px;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 28px;
+  }
+  .project-app-text {
+    display: grid;
+    gap: 8px;
+  }
+  /* アプリ名は「行政書士 |」と「毎日ちょっとドリル」の間でだけ折り返す */
+  .nowrap {
+    white-space: nowrap;
+  }
+  .project-app-video {
+    display: block;
+    width: 200px;
+    aspect-ratio: 9 / 16;
+    border: var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+  @media (max-width: 640px) {
+    .project-app {
+      grid-template-columns: 1fr;
+    }
+    .project-app-video {
+      justify-self: center;
+      width: min(240px, 100%);
+    }
   }
   .works-title {
     font-size: 24px;
@@ -1083,27 +1030,15 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     .values-list {
       grid-template-columns: 1fr;
     }
-    .steps,
-    .eras {
+    .steps {
       grid-template-columns: repeat(2, 1fr);
-    }
-    /* 2 列では、行の折り返しで矢印の向きが合わないので出さない */
-    .eras {
-      gap: 12px;
-    }
-    .era::after {
-      display: none;
     }
   }
   @media (max-width: 640px) {
     .services,
     .requests ul,
-    .steps,
-    .build-reasons {
+    .steps {
       grid-template-columns: 1fr;
-    }
-    .build-reasons {
-      gap: 24px;
     }
     .build-bridge {
       margin-top: 36px;
