@@ -244,11 +244,16 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
       </div>
 
       <h3 class="works-title" id="works">自社プロジェクト</h3>
+      <div class="projects">
       <a class="card project-link" href="/projects/local-ai/">
-        <span class="project-badge">Project</span>
-        <span class="project-name">おいすラボ</span>
-        <span class="project-body">AI を活用して、観光・地域・お店のアプリをつくり、リリース後の運用まで伴走するプロジェクトです。スタンプラリーや観光アプリのプロトタイプを公開しています。</span>
-        <span class="project-more">おいすラボを見る <span aria-hidden="true">→</span></span>
+        <span class="project-text">
+          <span class="project-badge">Project</span>
+          <span class="project-name">おいすラボ</span>
+          <span class="project-body">AI を活用して、観光・地域・お店のアプリをつくり、リリース後の運用まで伴走するプロジェクトです。スタンプラリーや観光アプリのプロトタイプを公開しています。</span>
+          <span class="project-more">おいすラボを見る <span aria-hidden="true">→</span></span>
+        </span>
+        <!-- おいすラボのページのトップと同じ動画 -->
+        <video class="project-video" src="/projects/local-ai/video/admin-ai-agent-spot-add.mp4" poster="/projects/local-ai/video/admin-ai-agent-spot-add-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="AI エージェントのチャットに写真を添えて頼むと、AI エージェントが管理画面に入力し、スマホのプレビューにスポットが追加される様子"></video>
       </a>
       <!-- 行政書士アプリ。紹介動画は flashcards リポジトリの promo/（Remotion）で書き出したもの（540×960） -->
       <div class="card project-link project-app">
@@ -268,6 +273,7 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
           playsinline
           aria-label="アプリの紹介動画。◯✕で答えると解説が出て、苦手な問題だけをくり返し、6 つのデザインから選べる様子"
         ></video>
+      </div>
       </div>
 
       <h3 class="works-title">過去のプロジェクト（一部抜粋）</h3>
@@ -719,7 +725,9 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
   /* 自社プロジェクト（おいすラボ）へのリンク */
   .project-link {
     display: grid;
-    gap: 8px;
+    grid-template-columns: 1fr 1.15fr;
+    align-items: center;
+    gap: 28px;
     padding: 24px 28px;
     color: inherit;
     text-decoration: none;
@@ -728,6 +736,23 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
   .project-link:hover {
     transform: translate(-2px, -2px);
     box-shadow: var(--shadow-lg);
+  }
+  .project-text {
+    display: grid;
+    gap: 8px;
+  }
+  /* 動画は白地なので、枠と角丸で囲んで、カードの中で浮かないようにする */
+  .project-video {
+    display: block;
+    width: 100%;
+    border: var(--line);
+    border-radius: var(--radius-sm);
+    background: #fff;
+  }
+  @media (max-width: 760px) {
+    .project-link {
+      grid-template-columns: 1fr;
+    }
   }
   .project-badge {
     justify-self: start;
@@ -790,6 +815,36 @@ const formReady = CONTACT_FORM_ENDPOINT !== '';
     .project-app-video {
       justify-self: center;
       width: min(240px, 100%);
+    }
+  }
+  /* PC では、自社プロジェクトを 2 カラムに並べる */
+  @media (min-width: 900px) {
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    /* おいすラボ: 説明の下に動画 */
+    .projects .project-link:not(.project-app) {
+      grid-template-columns: 1fr;
+      align-content: start;
+      gap: 20px;
+    }
+    /* 行政書士アプリ: 説明の下に縦長の動画を置き、左のカードと高さを合わせる */
+    .projects .project-app {
+      margin-top: 0;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      align-items: start;
+      gap: 20px;
+    }
+    .projects .project-app-video {
+      justify-self: center;
+      align-self: end;
+      width: auto;
+      height: 100%;
+      max-height: 350px;
     }
   }
   .works-title {
